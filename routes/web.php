@@ -26,5 +26,6 @@ Route::group([
         Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
         Route::resource('/variants', 'VariantController');
+        Route::resource('/formats', 'FormatController');
     });
 });

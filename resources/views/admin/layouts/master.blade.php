@@ -128,7 +128,7 @@
             </li>
             <li class=" nav-item"><a href="{{ route('variants.index') }}"><i class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">Варианты поставки</span></a>
             </li>
-            <li class=" nav-item"><a href="{{--{{ route('products.index') }}--}}"><i class="feather icon-check-square"></i><span class="menu-title" data-i18n="Todo">Продукты</span></a>
+            <li class=" nav-item"><a href="{{ route('formats.index') }}"><i class="feather icon-check-square"></i><span class="menu-title" data-i18n="Todo">Форматы разработки</span></a>
             </li>
             <li class=" nav-item"><a href="{{--{{ route('vacancies.index') }}--}}"><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">Вакансии</span></a>
             <li class=" nav-item"><a href="{{--{{ route('parameters.index') }}--}}"><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">Настройки</span></a>
