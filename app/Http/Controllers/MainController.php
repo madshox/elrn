@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Variant;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
     public function index()
     {
-        return view('index');
+        $variants = Variant::all();
+        return view('index', compact('variants'));
     }
 }

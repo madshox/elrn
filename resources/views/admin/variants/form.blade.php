@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @isset($variant)
-    @section('title', 'Редактировать')
+    @section('title', 'Редактировать ')
 @else
     @section('title', 'Создать')
 @endisset
@@ -69,70 +69,99 @@
                                                  aria-labelledby="account-tab" role="tabpanel">
 
                                                 <div class="row">
-                                                    <div class="col-6">
-                                                        @error('name')
-                                                        <div class="alert alert-danger">{{ $message }}</div>
-                                                        @enderror
-                                                    </div>
-
                                                     <!-- Tiny-editor-->
-                                                    @error('description')
+                                                    @error('text')
                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                     @enderror
                                                     <div class="col-12">
-                                                        <textarea class="myeditablediv" id="section001" name="description[ru]">
-                                                            {{ old('description', isset($variant) ? $variant->description['ru'] : null) }}</textarea>
+                                                        <div class="text-bold-600 font-medium-2 mb-1">
+                                                            Описание
+                                                        </div>
+                                                    @isset($variant)
+                                                        <textarea class="myeditablediv" id="section001"
+                                                                  name="text[ru]">
+                                                            {{ old('text', isset($variant) ? $variant->text['ru'] : null) }}</textarea>
+                                                    @else
+                                                        <textarea class="myeditablediv" id="section001"
+                                                                  name="text[ru]">
+                                                            {{--{{ old('text', isset($variant) ? $variant->text['ru'] : null) }}--}}</textarea>
+                                                @endisset
+                                                    </div>
+                                                <!-- end-Tiny-editor-->
+
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" id="social"
+                                                 aria-labelledby="social-tab" role="tabpanel">
+                                                <div class="row">
+
+                                                    <!-- Tiny-editor-->
+                                                    @error('text')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                    @enderror
+                                                    <div class="col-12">
+                                                        <div class="text-bold-600 font-medium-2 mb-1">
+                                                            Описание
+                                                        </div>
+                                                        @isset($variant)
+                                                            <textarea class="myeditablediv" id="section002"
+                                                                      name="text[en]">
+                                                            {{ old('text', isset($variant) ? $variant->text['en'] : null) }}</textarea>
+                                                        @else
+                                                            <textarea class="myeditablediv" id="section002"
+                                                                      name="text[en]">
+                                                            {{--{{ old('text', isset($variant) ? $variant->text['en'] : null) }}--}}</textarea>
+                                                        @endisset
                                                     </div>
                                                     <!-- end-Tiny-editor-->
                                                 </div>
                                             </div>
                                             <div class="tab-pane" id="profile"
                                                  aria-labelledby="profile-tab" role="tabpanel">
-
                                                 <div class="row">
-                                                    <div class="col-6">
-                                                        @error('name')
-                                                        <div class="alert alert-danger">{{ $message }}</div>
-                                                        @enderror
-                                                    </div>
 
                                                     <!-- Tiny-editor-->
-                                                    @error('description')
+                                                    @error('text')
                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                     @enderror
                                                     <div class="col-12">
-                                                        <textarea class="myeditablediv" id="section002" name="description[uz]">
-                                                            {{ old('description', isset($variant) ? $variant->description['uz'] : null) }}</textarea>
-                                                    </div>
-                                                    <!-- end-Tiny-editor-->
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane" id="social"
-                                                 aria-labelledby="social-tab" role="tabpanel">
-                                                <div class="row">
-                                                    <div class="col-sm-6 col-12">
-                                                        @error('name')
-                                                        <div class="alert alert-danger">{{ $message }}</div>
-                                                        @enderror
-                                                    </div>
-
-                                                    <!-- Tiny-editor-->
-                                                    @error('description')
-                                                    <div class="alert alert-danger">{{ $message }}</div>
-                                                    @enderror
-                                                    <div class="col-12">
-                                                        <textarea class="myeditablediv" id="section003" name="description[en]">{{ old('description', isset($about) ? $about->description['en'] : null) }}</textarea>
+                                                        <div class="text-bold-600 font-medium-2 mb-1">
+                                                            Описание
+                                                        </div>
+                                                        @isset($variant)
+                                                            <textarea class="myeditablediv" id="section003"
+                                                                      name="text[uz]">
+                                                            {{ old('text', isset($variant) ? $variant->text['uz'] : null) }}</textarea>
+                                                        @else
+                                                            <textarea class="myeditablediv" id="section003"
+                                                                      name="text[uz]">
+                                                            {{--{{ old('text', isset($variant) ? $variant->text['uz'] : null) }}--}}</textarea>
+                                                        @endisset
                                                     </div>
                                                     <!-- end-Tiny-editor-->
                                                 </div>
                                             </div>
                                         </div>
 
-                                        {{--upload-image--}}
+                                        <div class="col-12" style="margin-top: 20px">
+                                            @error('image')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                            <div class="text-bold-600 font-medium-2 mb-1">
+                                                Картинка
+                                            </div>
+                                            <fieldset class="form-group">
+                                                <label for="basicInputFile">Загрузить</label>
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input"
+                                                           id="inputGroupFile01" name="image">
+                                                    <label class="custom-file-label" for="inputGroupFile01">Файлы
+                                                        типа:
+                                                        webp, jpeg, jpg, png</label>
+                                                </div>
+                                            </fieldset>
+                                        </div>
 
-                                        {{--end-upload-image--}}
-
-                                        <!--buttons-->
                                         <div class="card-body">
                                             <div class="row" style="display: inline-flex">
                                                 <div class="col-6">
@@ -145,7 +174,7 @@
 
                                                 </div>
                                                 <div class="col-6">
-                                                    <a href="{{ route('dashboard') }}">
+                                                    <a href="{{ route('variants.index') }}">
                                                         <button type="button"
                                                                 class="btn btn-outline-danger round mr-1 mb-1 waves-effect waves-light">
                                                             Отмена
@@ -154,8 +183,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        {{--end-buttons--}}
-
                                     </div>
                                 </section>
                             </form>

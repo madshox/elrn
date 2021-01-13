@@ -38,7 +38,9 @@
                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
-                        <strong>{{ session()->get('warning') }} <button class="btn btn-light" type="submit">Logout</button></strong>
+                            <strong>{{ session()->get('warning') }}
+                                <button class="btn btn-light" type="submit">Logout</button>
+                            </strong>
                         </form>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -103,7 +105,8 @@
     <div class="container">
         <div class="mynav">
             <nav class="my-navbar">
-                <a class="navbar-brand pl-3" href="#header"><img src="{{ asset('front/img/logosvg.svg') }}" alt="logo" loading="lazy"></a>
+                <a class="navbar-brand pl-3" href="#header"><img src="{{ asset('front/img/logosvg.svg') }}" alt="logo"
+                                                                 loading="lazy"></a>
                 <ul class="nav ml-auto d-flex align-items-center">
                     <li class="dn"><a href="#order-form">Оставить заявку</a></li>
                     <li class="nav-icon1 d-flex align-items-center">
@@ -140,49 +143,26 @@
             </div>
         </div>
     </section>
-
-    <section class="delivery-option" id="delivery-option">
-        <div class="container">
-            <div class="title d-flex">
-                <h2>Варианты поставки<span class="empty">электронных курсов</span></h2>
+    @isset($variants)
+        <section class="delivery-option" id="delivery-option">
+            <div class="container">
+                <div class="title d-flex">
+                    <h2>Варианты поставки<span class="empty">электронных курсов</span></h2>
+                </div>
+                @foreach($variants as $variant)
+                    <div class="block d-flex">
+                        <div class="icon mr-3">
+                            <img src="{{ Storage::url($variant->image) }}" alt="">
+                        </div>
+                        <div class="text ml-3">
+                            {!! $variant->text() !!}
+                        </div>
+                    </div>
+                @endforeach
             </div>
-            <div class="block d-flex">
-                <div class="icon mr-3">
-                    <img src="img/icon1png-min.png" alt="">
-                </div>
-                <div class="text ml-3">
-                    <h4>Уникальная разработка</h4>
-                    <p class="">Мы разрабатываем курсы с уникальными концепциями, которые решают конкретную
-                        учебную задачу. Курс полностью реализуем с нуля под ваши индивидуальные пожелания.</p>
-                </div>
-            </div>
-            <div class="block d-flex">
-                <div class="icon mr-3">
-                    <img src="img/icon2-min.png" alt="">
-                </div>
-                <div class="text ml-3">
-                    <h4>Готовые решения (коробочные курсы)</h4>
-                    <p class="">Вы можете приобрести готовые курсы по востребованным общим темам. Это
-                        позволит
-                        вам:<br> • Сэкономить время на разработке и согласовании контента и дизайна;<br> • В
-                        короткие сроки запустить обучение</p>
-                </div>
-            </div>
-            <div class="block d-flex">
-                <div class="icon mr-3">
-                    <img src="img/icon3-min.png" alt="">
-                </div>
-                <div class="text ml-3">
-                    <h4>Поточная разработка</h4>
-                    <p class="">Мы предлагаем вам поточную разработку, когда нужно сделать много курсов по
-                        однородной тематике в короткий срок. Курсы реализуются в едином дизайне,
-                        методологическом
-                        решении и шаблоне сборки. В этом случае стоимость каждого курса уменьшается.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    @else
+    @endisset
     <section class="formats" id="formats">
         <div class="container">
             <h2 class="text-center py-4">Форматы разработки электронных курсов</h2>

@@ -23,7 +23,6 @@
                                             <th scope="col">ID</th>
                                             <th scope="col">Name</th>
                                             <th scope="col" style="text-align: center;">Image</th>
-                                            <th scope="col" style="text-align: center;">Icon</th>
                                             <th scope="col" style="text-align: center;">Действия</th>
                                         </tr>
                                         </thead>
@@ -31,9 +30,8 @@
                                         @foreach($variants as $variant)
                                             <tr>
                                                 <th scope="row">{{ $variant->id }}</th>
-                                                <td>{{ $variant->name }}</td>
+                                                <td>{!! $variant->text() !!}</td>
                                                 <td style="text-align: center;"><img src="{{ Storage::url($variant->image) }}" height="auto" width="150" alt=""></td>
-                                                <td style="text-align: center;"><img src="{{ Storage::url($variant->icon) }}" height="auto" width="150" alt=""></td>
                                                 <td style="display: flex; justify-content: center">
                                                     <form action="{{ route('variants.destroy', $variant) }}" method="POST">
                                                         <a href="{{ route('variants.edit', $variant) }}"><button type="button" class="btn btn-icon btn-warning mr-1 mb-1 waves-effect waves-light">

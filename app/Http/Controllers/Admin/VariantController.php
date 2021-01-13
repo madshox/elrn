@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\VariantRequest;
 use App\Variant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class VariantController extends Controller
 {
@@ -36,9 +38,17 @@ class VariantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(VariantRequest $request)
     {
-        //
+        $params = $request->all();
+        unset($params['image']);
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('public/variants');
+            $params['image'] = $path;
+        }
+
+        Variant::create($params);
+        return redirect()->route('variants.index');
     }
 
     /**
@@ -60,7 +70,7 @@ class VariantController extends Controller
      */
     public function edit(Variant $variant)
     {
-        //
+        return view('admin.variants.form', compact('variant'));
     }
 
     /**
@@ -70,9 +80,18 @@ class VariantController extends Controller
      * @param  \App\Variant  $variant
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Variant $variant)
+    public function update(VariantRequest $request, Variant $variant)
     {
-        //
+        $params = $request->all();
+        unset($params['image']);
+        if ($request->hasFile('image')) {
+            Storage::delete($variant->image);
+            $path = $request->file('image')->store('public/variants');
+            $params['image'] = $path;
+        }
+
+        $variant->update($params);
+        return redirect()->route('variants.index');
     }
 
     /**
@@ -83,6 +102,7 @@ class VariantController extends Controller
      */
     public function destroy(Variant $variant)
     {
-        //
+        $variant->delete();
+        return redirect()->route('variants.index');
     }
 }
