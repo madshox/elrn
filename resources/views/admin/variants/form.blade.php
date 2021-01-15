@@ -69,7 +69,7 @@
                                                  aria-labelledby="account-tab" role="tabpanel">
 
                                                 <div class="row">
-                                                    <!-- Tiny-editor-->
+                                                    {{--CK-editor--}}
                                                     @error('text')
                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                     @enderror
@@ -77,17 +77,15 @@
                                                         <div class="text-bold-600 font-medium-2 mb-1">
                                                             Описание
                                                         </div>
-                                                    @isset($variant)
-                                                        <textarea class="myeditablediv" id="section001"
-                                                                  name="text[ru]">
-                                                            {{ old('text', isset($variant) ? $variant->text['ru'] : null) }}</textarea>
-                                                    @else
-                                                        <textarea class="myeditablediv" id="section001"
-                                                                  name="text[ru]">
-                                                            {{--{{ old('text', isset($variant) ? $variant->text['ru'] : null) }}--}}</textarea>
-                                                @endisset
+                                                        @isset($variant)
+                                                        <textarea name="text[ru]" id="editor" cols="30"
+                                                                  rows="10">{{ old('text', isset($variant) ? $variant->text['ru'] : null) }}</textarea>
+                                                        @else
+                                                            <textarea name="text[ru]" id="editor" cols="30"
+                                                                      rows="10">{{ old('text', isset($variant) ? $variant->text['ru'] : null) }}</textarea>
+                                                        @endisset
                                                     </div>
-                                                <!-- end-Tiny-editor-->
+                                                    {{--end-CK-editor--}}
 
                                                 </div>
                                             </div>
@@ -95,7 +93,7 @@
                                                  aria-labelledby="social-tab" role="tabpanel">
                                                 <div class="row">
 
-                                                    <!-- Tiny-editor-->
+                                                    {{--CK-editor--}}
                                                     @error('text')
                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                     @enderror
@@ -104,23 +102,23 @@
                                                             Описание
                                                         </div>
                                                         @isset($variant)
-                                                            <textarea class="myeditablediv" id="section002"
-                                                                      name="text[en]">
-                                                            {{ old('text', isset($variant) ? $variant->text['en'] : null) }}</textarea>
+                                                            <textarea name="text[en]" id="editor1" cols="30"
+                                                                      rows="10">{{ old('text', isset($variant) ? $variant->text['en'] : null) }}</textarea>
                                                         @else
-                                                            <textarea class="myeditablediv" id="section002"
-                                                                      name="text[en]">
-                                                            {{--{{ old('text', isset($variant) ? $variant->text['en'] : null) }}--}}</textarea>
+                                                            <textarea name="text[en]" id="editor1" cols="30"
+                                                                      rows="10">{{ old('text', isset($variant) ? $variant->text['en'] : null) }}</textarea>
                                                         @endisset
                                                     </div>
-                                                    <!-- end-Tiny-editor-->
+                                                    {{--end-CK-editor--}}
+
+
                                                 </div>
                                             </div>
                                             <div class="tab-pane" id="profile"
                                                  aria-labelledby="profile-tab" role="tabpanel">
                                                 <div class="row">
 
-                                                    <!-- Tiny-editor-->
+                                                    {{--CK-editor--}}
                                                     @error('text')
                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                     @enderror
@@ -129,16 +127,15 @@
                                                             Описание
                                                         </div>
                                                         @isset($variant)
-                                                            <textarea class="myeditablediv" id="section003"
-                                                                      name="text[uz]">
-                                                            {{ old('text', isset($variant) ? $variant->text['uz'] : null) }}</textarea>
+                                                            <textarea name="text[uz]" id="editor2" cols="30"
+                                                                      rows="10">{{ old('text', isset($variant) ? $variant->text['uz'] : null) }}</textarea>
                                                         @else
-                                                            <textarea class="myeditablediv" id="section003"
-                                                                      name="text[uz]">
-                                                            {{--{{ old('text', isset($variant) ? $variant->text['uz'] : null) }}--}}</textarea>
+                                                            <textarea name="text[uz]" id="editor2" cols="30"
+                                                                      rows="10">{{ old('text', isset($variant) ? $variant->text['uz'] : null) }}</textarea>
                                                         @endisset
                                                     </div>
-                                                    <!-- end-Tiny-editor-->
+                                                    {{--end-CK-editor--}}
+
                                                 </div>
                                             </div>
                                         </div>
