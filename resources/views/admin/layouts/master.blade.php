@@ -74,22 +74,6 @@
                                 class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i
                                     class="ficon feather icon-menu"></i></a></li>
                     </ul>
-                    <ul class="nav navbar-nav">
-                        <li class="nav-item d-none d-lg-block"><a class="nav-link bookmark-star"><i
-                                    class="ficon feather icon-star warning"></i></a>
-                            <div class="bookmark-input search-input">
-                                <div class="bookmark-input-icon"><i class="feather icon-search primary"></i></div>
-                                <input class="form-control input" type="text" placeholder="Explore Vuexy..."
-                                       tabindex="0" data-search="template-list">
-                                <ul class="search-list search-list-bookmark"></ul>
-                            </div>
-                            <!-- select.bookmark-select-->
-                            <!--   option Chat-->
-                            <!--   option email-->
-                            <!--   option todo-->
-                            <!--   option Calendar-->
-                        </li>
-                    </ul>
                 </div>
                 <ul class="nav navbar-nav float-right">
                     <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-expand"><i
@@ -164,8 +148,8 @@
             </li>
             <li class=" nav-item"><a href="{{ route('themes.index') }}"><i class="feather icon-calendar"></i><span
                         class="menu-title" data-i18n="Calender">Тематика</span></a>
-            <li class=" nav-item"><a href="{{--{{ route('parameters.index') }}--}}"><i
-                        class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">Настройки</span></a>
+            <li class=" nav-item"><a href="{{ route('methods.index') }}"><i
+                        class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">Методы</span></a>
             <li class=" nav-item"><a href="{{--{{ route('abouts.index') }}--}}"><i
                         class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">О нас</span></a>
             </li>

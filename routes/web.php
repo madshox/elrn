@@ -28,5 +28,6 @@ Route::group([
         Route::resource('/variants', 'VariantController');
         Route::resource('/formats', 'FormatController');
         Route::resource('/themes', 'ThemeController');
+        Route::resource('/methods', 'MethodController');
     });
 });

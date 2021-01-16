@@ -143,7 +143,7 @@
             </div>
         </div>
     </section>
-    @isset($variants)
+    @if( ! $variants->isEmpty() )
         <section class="delivery-option" id="delivery-option">
             <div class="container">
                 <div class="title d-flex">
@@ -161,255 +161,81 @@
                 @endforeach
             </div>
         </section>
-    @else
-    @endisset
-    <section class="formats" id="formats">
-        <div class="container">
-            <h2 class="text-center py-4">Форматы разработки электронных курсов</h2>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4">
+    @endif
+    @if( ! $formats->isEmpty() )
+        <section class="formats" id="formats">
+            <div class="container">
+                <h2 class="text-center py-4">Форматы разработки электронных курсов</h2>
+                <div class="row">
+                    @foreach($formats as $format)
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <a href="#formats">
+                                <div class="card">
+                                    <img src="{{ Storage::url($format->image) }}" alt="slide-course">
+                                    <h5>{{ $format->name() }}</h5>
 
-                    <a href="#formats">
-                        <div class="card">
-                            <img src="img/formats_icon1-min.png" alt="slide-course">
-                            <h5>Слайдовые курсы</h5>
-
+                                </div>
+                            </a>
                         </div>
-                    </a>
+                    @endforeach
                 </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <a href="#formats">
-                        <div class="card">
-                            <img src="img/formats_icon2-min.png" alt="plot-course">
-                            <h5>Сюжетные курсы</h5>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <a href="#formats">
-                        <div class="card">
-                            <img src="img/formats_icon3-min.png" alt="">
-                            <h5>Видеокурсы</h5>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <a href="#formats">
-                        <div class="card">
-                            <img src="img/formats_icon4-min.png" alt="slide-course">
-                            <h5>Игровые тренажеры</h5>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <a href="#formats">
-                        <div class="card">
-                            <img src="img/formats_icon5-min.png" alt="plot-course">
-                            <h5>Бизнес-симуляторы</h5>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <a href="#formats">
-                        <div class="card">
-                            <img src="img/formats_icon6-min.png" alt="">
-                            <h5>Одностраничные курсы</h5>
-                        </div>
+                <div class="btn d-flex justify-content-center py-5">
+                    <a href="#order-form">
+                        <button class="button">Заказать курс</button>
                     </a>
                 </div>
             </div>
-            <div class="btn d-flex justify-content-center py-5">
-                <a href="#order-form">
-                    <button class="button">Заказать курс</button>
-                </a>
-            </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
     <section class="courses" id="courses">
-        <div class="accordion-collapse">
-            <div class="container">
-                <h2 class="title">Тематика электронных курсов</h2>
+        @if( ! $formats->isEmpty() )
+            <div class="accordion-collapse">
+                <div class="container">
+                    <h2 class="title">Тематика электронных курсов</h2>
 
+                    <div class="accordions" id="accordionExample">
+                        @foreach($themes as $theme)
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <div class="mb-0">
+                                        <div class="text-left collapsed" data-toggle="collapse"
+                                             data-target="#collapseOne"
+                                             aria-expanded="false" aria-controls="collapseOne">
+                                            <p class="header_title">{{ $theme->name() }}</p>
+                                        </div>
+                                    </div>
+                                </div>
 
-                <div class="accordions" id="accordionExample">
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <div class="mb-0">
-                                <div class="text-left collapsed" data-toggle="collapse" data-target="#collapseOne"
-                                     aria-expanded="false" aria-controls="collapseOne">
-                                    <p class="header_title">Продуктовые курсы</p>
+                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                                     data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <p class="text">{{ strip_tags($theme->description()) }}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
-                             data-parent="#accordionExample">
-                            <div class="card-body">
-                                <p class="text">В таких курсах систематизированы знания о различных процессах
-                                    компании: согласование документов, поиск поставщиков,
-                                    добыча и обработка сырья, производство и контроль качества продукции и другие
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingTwo">
-                            <div class="mb-0">
-                                <div class="text-left collapsed" data-toggle="collapse" data-target="#collapseTwo"
-                                     aria-expanded="false" aria-controls="collapseTwo">
-                                    <p class="header_title">Курсы о процессах</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                             data-parent="#accordionExample">
-                            <div class="card-body">
-                                <p class="text"> Anim pariatur cliche reprehenderit, enim eiusmod high life
-                                    accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat
-                                    skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3
-                                    wolf
-                                    moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
-                                    assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes
-                                    anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
-                                    butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                                    aesthetic synth nesciunt you probably haven't heard of them accusamus labore
-                                    sustainable VHS.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingThree">
-                            <div class="mb-0">
-                                <div class="text-left collapsed" data-toggle="collapse" data-target="#collapseThree"
-                                     aria-expanded="false" aria-controls="collapseThree">
-                                    <p class="header_title">Адаптационные курсы</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                             data-parent="#accordionExample">
-                            <div class="card-body">
-                                <p class="text"> Anim pariatur cliche reprehenderit, enim eiusmod high life
-                                    accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat
-                                    skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3
-                                    wolf
-                                    moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
-                                    assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes
-                                    anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
-                                    butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                                    aesthetic synth nesciunt you probably haven't heard of them accusamus labore
-                                    sustainable VHS.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingFour">
-                            <div class="mb-0">
-                                <div class="text-left collapsed" data-toggle="collapse" data-target="#collapseFour"
-                                     aria-expanded="false" aria-controls="collapseFour">
-                                    <p class="header_title">Курсы о навыках</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
-                             data-parent="#accordionExample">
-                            <div class="card-body">
-                                <p class="text"> Anim pariatur cliche reprehenderit, enim eiusmod high life
-                                    accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat
-                                    skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3
-                                    wolf
-                                    moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
-                                    assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes
-                                    anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
-                                    butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                                    aesthetic synth nesciunt you probably haven't heard of them accusamus labore
-                                    sustainable VHS.</p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
-        </div>
+        @endif
 
         <div class="methodical" id="methodical">
             <div class="container">
                 <h2 class="text-center">Методические приемы в электронных курсах</h2>
                 <div class="row">
+                    @foreach($methods as $method)
                     <div class="col-lg-6">
                         <div class="card d-flex">
-                            <img src="img/methodical_icon1-min.png" alt="">
-                            <h5>Иллюстрации и инфографика</h5>
+                            <img src="{{ Storage::url($method->image) }}" alt="">
+                            <h5>{{ $method->name() }}</h5>
                             <div class="hidden-text">
-                                <p class="text">Проверочные задания вовлекают пользователя в учебный
-                                    процесс и помогают закрепить полученные знания.
-                                    Для эффективной отработки алгоритма действий
-                                    мы воспроизводим реальные рабочие ситуации.</p>
+                                <p class="text">{{ strip_tags($method->description()) }}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="card d-flex">
-                            <img src="img/methodical_icon2-min.png" alt="">
-                            <h5>Анимация и скрайбинг</h5>
-                            <div class="hidden-text">
-                                <p class="text">Проверочные задания вовлекают пользователя в учебный
-                                    процесс и помогают закрепить полученные знания.
-                                    Для эффективной отработки алгоритма действий
-                                    мы воспроизводим реальные рабочие ситуации.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="card card-3 d-flex">
-                            <img src="img/methodical_icon1-min.png" alt="">
-                            <h5>Иллюстрации и инфографика</h5>
-                            <div class="hidden-text">
-                                <p class="text">Проверочные задания вовлекают пользователя в учебный
-                                    процесс и помогают закрепить полученные знания.
-                                    Для эффективной отработки алгоритма действий
-                                    мы воспроизводим реальные рабочие ситуации.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="card d-flex">
-                            <img src="img/methodical_icon3-min.png" alt="">
-                            <h5>Компоненты геймификации</h5>
-                            <div class="hidden-text">
-                                <p class="text">Проверочные задания вовлекают пользователя в учебный
-                                    процесс и помогают закрепить полученные знания.
-                                    Для эффективной отработки алгоритма действий
-                                    мы воспроизводим реальные рабочие ситуации.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="card d-flex">
-                            <img src="img/methodical_icon4-min.png" alt="">
-                            <h5>Траектории обучения</h5>
-                            <div class="hidden-text">
-                                <p class="text">Проверочные задания вовлекают пользователя в учебный
-                                    процесс и помогают закрепить полученные знания.
-                                    Для эффективной отработки алгоритма действий
-                                    мы воспроизводим реальные рабочие ситуации.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="card d-flex">
-                            <img src="img/methodical_icon5-min.png" alt="">
-                            <h5>Сторителлинг</h5>
-                            <div class="hidden-text">
-                                <p class="text">Проверочные задания вовлекают пользователя в учебный
-                                    процесс и помогают закрепить полученные знания.
-                                    Для эффективной отработки алгоритма действий
-                                    мы воспроизводим реальные рабочие ситуации.</p>
-                            </div>
-                        </div>
-                    </div>
-
+                    @endforeach
                     <div class="btn pt-5">
                         <a href="#order-form">
                             <button class="button">Заказать курс</button>
@@ -419,6 +245,7 @@
             </div>
         </div>
     </section>
+
     <section class="about" id="about">
         <div class="container py-5">
             <h2 class="py-5">Технологии разработки</h2>
