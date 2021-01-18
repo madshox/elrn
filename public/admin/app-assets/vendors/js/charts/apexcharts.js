@@ -21628,7 +21628,7 @@
       extend: {
         /**
          * sets or returns the target of this animation
-         * @param o object || number In case of Object it holds all parameters. In case of number its the duration of the animation
+         * @param o object || number In case of Object it holds all abouts. In case of number its the duration of the animation
          * @param ease function || string Function which should be used for easing or easing keyword
          * @param delay Number indicating the delay before the animation starts
          * @return target || this
@@ -26311,7 +26311,7 @@
   // The curves are returned as an array of SVG curve commands:
   // [ ['C', x1, y1, x2, y2, x, y] ... ]
   function arcToBeziere(pos, val) {
-      // Parameters extraction, handle out-of-range parameters as specified in the SVG spec
+      // Parameters extraction, handle out-of-range abouts as specified in the SVG spec
       // See: https://www.w3.org/TR/SVG11/implnote.html#ArcOutOfRangeParameters
       var rx = Math.abs(val[1]), ry = Math.abs(val[2]), xAxisRotation = val[3] % 360
         , largeArcFlag = val[4], sweepFlag = val[5], x = val[6], y = val[7]
@@ -26673,7 +26673,7 @@
       // The function can return a boolean or an object of the form {x, y}, to which the element will be moved. "False" skips moving, true moves to raw x, y.
       draggable: function(value, constraint) {
 
-        // Check the parameters and reassign if needed
+        // Check the abouts and reassign if needed
         if (typeof value == 'function' || typeof value == 'object') {
           constraint = value;
           value = true;
@@ -26981,7 +26981,7 @@
       // Select element with mouse
       selectize: function (value, options) {
 
-          // Check the parameters and reassign if needed
+          // Check the abouts and reassign if needed
           if (typeof value === 'object') {
               options = value;
               value = true;
@@ -28950,7 +28950,7 @@
        * @param {string} chartID - The unique identifier which will be used to call methods
        * on that chart instance
        * @param {function} fn - The method name to call
-       * @param {object} opts - The parameters which are accepted in the original method will be passed here in the same order.
+       * @param {object} opts - The abouts which are accepted in the original method will be passed here in the same order.
        */
 
     }, {

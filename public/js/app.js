@@ -8175,7 +8175,7 @@ Expr = Sizzle.selectors = {
 					Sizzle.error( match[ 0 ] );
 				}
 
-				// numeric x and y parameters for Expr.filter.CHILD
+				// numeric x and y abouts for Expr.filter.CHILD
 				// remember that false/true cast respectively to 0/1
 				match[ 4 ] = +( match[ 4 ] ?
 					match[ 5 ] + ( match[ 6 ] || 1 ) :
@@ -9798,7 +9798,7 @@ function createOptions( options ) {
 }
 
 /*
- * Create a callback list using the following parameters:
+ * Create a callback list using the following abouts:
  *
  *	options: an optional list of space-separated options that will change how
  *			the callback list behaves or a more traditional option object
@@ -13655,7 +13655,7 @@ function createFxNow() {
 	return ( fxNow = Date.now() );
 }
 
-// Generate parameters to create a standard animation
+// Generate abouts to create a standard animation
 function genFx( type, includeWidth ) {
 	var which,
 		i = 0,
@@ -33105,7 +33105,7 @@ return jQuery;
      *
      * Following shorthands are possible for providing predicates.
      * Pass an `Object` and it will be used as an parameter for `_.matches` to create the predicate.
-     * Pass an `Array` of parameters for `_.matchesProperty` and the predicate will be created using them.
+     * Pass an `Array` of abouts for `_.matchesProperty` and the predicate will be created using them.
      *
      * @static
      * @memberOf _
@@ -33135,7 +33135,7 @@ return jQuery;
      *
      * Following shorthands are possible for providing predicates.
      * Pass an `Object` and it will be used as an parameter for `_.matches` to create the predicate.
-     * Pass an `Array` of parameters for `_.matchesProperty` and the predicate will be created using them.
+     * Pass an `Array` of abouts for `_.matchesProperty` and the predicate will be created using them.
      *
      * @static
      * @memberOf _
@@ -42765,7 +42765,7 @@ function initUse (Vue) {
       return this
     }
 
-    // additional parameters
+    // additional abouts
     var args = toArray(arguments, 1);
     args.unshift(this);
     if (typeof plugin.install === 'function') {
@@ -49826,7 +49826,7 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
   null,
   null,
   null
-  
+
 )
 
 /* hot reload */
@@ -49846,7 +49846,7 @@ component.options.__file = "resources/js/components/ExampleComponent.vue"
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ExampleComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]);
 
 /***/ }),
 

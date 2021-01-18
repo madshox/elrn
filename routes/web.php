@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'MainController@index')->name('index');
+Route::post('/order', 'MainController@order')->name('get_order');
 
 Auth::routes();
 
@@ -29,5 +30,11 @@ Route::group([
         Route::resource('/formats', 'FormatController');
         Route::resource('/themes', 'ThemeController');
         Route::resource('/methods', 'MethodController');
+        Route::resource('/technologies', 'TechnologyController');
+        Route::resource('/benefits', 'BenefitController');
+        Route::resource('/processes', 'ProcessController');
+        Route::resource('/costs', 'CostController');
+        Route::resource('/brends', 'BrendController');
+        Route::resource('/abouts', 'AboutController');
     });
 });

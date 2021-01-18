@@ -153,7 +153,7 @@ export interface PaginationOptions {
   bulletActiveClass?: string;
 
   /**
-   * The beginning of the modifier CSS class name that will be added to pagination depending on parameters
+   * The beginning of the modifier CSS class name that will be added to pagination depending on abouts
    */
   modifierClass?: string;
 

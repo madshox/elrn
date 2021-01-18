@@ -232,7 +232,7 @@
 
       /**
        * This function updates the value of the counter in the indicator.
-       * Wants as parameters: the number of remaining chars, the element currently managed,
+       * Wants as abouts: the number of remaining chars, the element currently managed,
        * the maxLength for the current input and the indicator generated for it.
        *
        * @param remaining

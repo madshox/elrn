@@ -33,7 +33,7 @@ export interface AutoplayEvents {
 }
 
 /**
- * Object with autoplay parameters or boolean true to enable with default settings.
+ * Object with autoplay abouts or boolean true to enable with default settings.
  *
  * @example
  * var mySwiper = new Swiper('.swiper-container', {

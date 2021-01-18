@@ -2,7 +2,7 @@
 
 //--------------------------------------------------------------------------------------------------
 // This script reads event data from a JSON file and outputs those events which are within the range
-// supplied by the "start" and "end" GET parameters.
+// supplied by the "start" and "end" GET abouts.
 //
 // An optional "timezone" GET parameter will force all ISO8601 date stings to a given timezone.
 //
@@ -17,7 +17,7 @@ if (!isset($_GET['start']) || !isset($_GET['end'])) {
 	die("Please provide a date range.");
 }
 
-// Parse the start/end parameters.
+// Parse the start/end abouts.
 // These are assumed to be ISO8601 strings with no time nor timezone, like "2013-12-29".
 // Since no timezone will be present, they will parsed as UTC.
 $range_start = parseDateTime($_GET['start']);

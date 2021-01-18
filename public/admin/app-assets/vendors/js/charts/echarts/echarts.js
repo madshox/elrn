@@ -1891,7 +1891,7 @@ function preparePointerTransformer(markers, saved) {
  * Do not calculate repeatly if `zrX` and `zrY` already exist.
  *
  * Notice: see comments in `clientToLocal`. check the relationship
- * between the result coords and the parameters `el` and `calculate`.
+ * between the result coords and the abouts `el` and `calculate`.
  *
  * @param {HTMLElement} el DOM element.
  * @param {Event} [e] Mouse event or touch event. For lagency IE,
@@ -16801,7 +16801,7 @@ var _highlightKeyMap = {};
 
 
 /**
- * Extend shape with parameters
+ * Extend shape with abouts
  */
 function extendShape(opts) {
     return Path.extend(opts);
@@ -17232,7 +17232,7 @@ function shouldSilent(el, e) {
  * root group, we can simply mount the style on `el.hoverStyle` for them, but should
  * not call this method for them.
  *
- * (3) These input parameters can be set directly on `el`:
+ * (3) These input abouts can be set directly on `el`:
  *
  * @param {module:zrender/Element} el
  * @param {Object} [el.hoverStyle] See `graphic.setElementHoverStyle`.
@@ -20391,7 +20391,7 @@ var colorPaletteMixin = {
 
     /**
      * @param {string} name MUST NOT be null/undefined. Otherwise call this function
-     *                 twise with the same parameters will get different result.
+     *                 twise with the same abouts will get different result.
      * @param {Object} [scope=this]
      * @param {Object} [requestColorNum]
      * @return {string} color string.
@@ -40153,7 +40153,7 @@ var PI$2 = Math.PI;
  *
  * @param {module:zrender/container/Group} group
  * @param {Object} axisModel
- * @param {Object} opt Standard axis parameters.
+ * @param {Object} opt Standard axis abouts.
  * @param {Array.<number>} opt.position [x, y]
  * @param {number} opt.rotation by radian
  * @param {number} [opt.nameDirection=1] 1 or -1 Used when nameLocation is 'middle' or 'center'.
@@ -49128,7 +49128,7 @@ SeriesModel.extend({
 
     layoutInfo: null,
 
-    // can support the position parameters 'left', 'top','right','bottom', 'width',
+    // can support the position abouts 'left', 'top','right','bottom', 'width',
     // 'height' in the setOption() with 'merge' mode normal.
     layoutMode: 'box',
 
@@ -67870,7 +67870,7 @@ function showTooltip(dataByCoordSys, axisInfo, payloadInfo, value) {
         // Caustion: viewHelper.getValueLabel is actually on "view stage", which
         // depends that all models have been updated. So it should not be performed
         // here. Considering axisPointerModel used here is volatile, which is hard
-        // to be retrieve in TooltipView, we prepare parameters here.
+        // to be retrieve in TooltipView, we prepare abouts here.
         valueLabelOpt: {
             precision: axisPointerModel.get('label.precision'),
             formatter: axisPointerModel.get('label.formatter')
@@ -72985,7 +72985,7 @@ Polar.prototype = {
 
     /**
      * Convert a single data item to (x, y) point.
-     * Parameter data is an array which the first element is radius and the second is angle
+     * Setting data is an array which the first element is radius and the second is angle
      * @param {Array.<number>} data
      * @param {boolean} [clamp=false]
      * @return {Array.<number>}

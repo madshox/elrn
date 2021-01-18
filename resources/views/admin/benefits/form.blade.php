@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@isset($method)
+@isset($benefit)
     @section('title', 'Редактировать ')
 @else
     @section('title', 'Создать')
@@ -18,7 +18,7 @@
                     <div class="col-12">
                         <div class="card" style="">
                             <div class="card-header">
-                                @isset($method)
+                                @isset($benefit)
                                     <h4 class="card-title">Редактировать</h4>
                                 @else
                                     <h4 class="card-title">Создать</h4>
@@ -26,13 +26,13 @@
                             </div>
                             {{--start-tab--}}
                             <form method="POST" enctype="multipart/form-data"
-                                  @isset($method)
-                                  action="{{ route('methods.update', $method) }}"
+                                  @isset($benefit)
+                                  action="{{ route('benefits.update', $benefit) }}"
                                   @else
-                                  action="{{ route('methods.store') }}"
+                                  action="{{ route('benefits.store') }}"
                                 @endisset>
 
-                                @isset($method)
+                                @isset($benefit)
                                     @method('PUT')
                                 @endisset
 
@@ -78,41 +78,22 @@
                                                         </div>
                                                         <fieldset
                                                             class="form-group position-relative has-icon-left input-divider-left">
-                                                            @isset($method)
+                                                            @isset($benefit)
                                                                 <input type="text" class="form-control" id="name"
                                                                        name="name[ru]"
                                                                        placeholder="Название"
-                                                                       value="{{ old('name', isset($method) ? $method->name['ru'] : null) }}">
+                                                                       value="{{ old('name', isset($benefit) ? $benefit->name['ru'] : null) }}">
                                                             @else
                                                                 <input type="text" class="form-control" id="name"
                                                                        name="name[ru]"
                                                                        placeholder="Название"
-                                                                       value="{{--{{ old('name', isset($method) ? $method->name : null) }}--}}">
+                                                                       value="{{--{{ old('name', isset($benefit) ? $benefit->name : null) }}--}}">
                                                             @endisset
                                                             <div class="form-control-position">
                                                                 <i class="feather icon-phone"></i>
                                                             </div>
                                                         </fieldset>
                                                     </div>
-
-                                                    {{--CK-editor--}}
-                                                    @error('description')
-                                                    <div class="alert alert-danger">{{ $message }}</div>
-                                                    @enderror
-                                                    <div class="col-12">
-                                                        <div class="text-bold-600 font-medium-2 mb-1">
-                                                            Описание
-                                                        </div>
-                                                        @isset($method)
-                                                            <textarea name="description[ru]" id="editor" cols="30"
-                                                                      rows="10">{{ old('description', isset($method) ? $method->description['ru'] : null) }}</textarea>
-                                                        @else
-                                                            <textarea name="description[ru]" id="editor" cols="30"
-                                                                      rows="10">{{ old('description', isset($method) ? $method->description['ru'] : null) }}</textarea>
-                                                        @endisset
-                                                    </div>
-                                                    {{--end-CK-editor--}}
-
                                                 </div>
                                             </div>
                                             <div class="tab-pane" id="social"
@@ -127,42 +108,22 @@
                                                         </div>
                                                         <fieldset
                                                             class="form-group position-relative has-icon-left input-divider-left">
-                                                            @isset($method)
+                                                            @isset($benefit)
                                                                 <input type="text" class="form-control" id="name"
                                                                        name="name[en]"
                                                                        placeholder="Название"
-                                                                       value="{{ old('name', isset($method) ? $method->name['en'] : null) }}">
+                                                                       value="{{ old('name', isset($benefit) ? $benefit->name['en'] : null) }}">
                                                             @else
                                                                 <input type="text" class="form-control" id="name"
                                                                        name="name[en]"
                                                                        placeholder="Название"
-                                                                       value="{{--{{ old('name', isset($method) ? $method->name : null) }}--}}">
+                                                                       value="{{--{{ old('name', isset($benefit) ? $benefit->name['en'] : null) }}--}}">
                                                             @endisset
                                                             <div class="form-control-position">
                                                                 <i class="feather icon-phone"></i>
                                                             </div>
                                                         </fieldset>
                                                     </div>
-
-                                                    {{--CK-editor--}}
-                                                    @error('description')
-                                                    <div class="alert alert-danger">{{ $message }}</div>
-                                                    @enderror
-                                                    <div class="col-12">
-                                                        <div class="text-bold-600 font-medium-2 mb-1">
-                                                            Описание
-                                                        </div>
-                                                        @isset($method)
-                                                            <textarea name="description[en]" id="editor1" cols="30"
-                                                                      rows="10">{{ old('description', isset($method) ? $method->description['en'] : null) }}</textarea>
-                                                        @else
-                                                            <textarea name="description[en]" id="editor1" cols="30"
-                                                                      rows="10">{{ old('description', isset($method) ? $method->description['en'] : null) }}</textarea>
-                                                        @endisset
-                                                    </div>
-                                                    {{--end-CK-editor--}}
-
-
                                                 </div>
                                             </div>
                                             <div class="tab-pane" id="profile"
@@ -177,63 +138,42 @@
                                                         </div>
                                                         <fieldset
                                                             class="form-group position-relative has-icon-left input-divider-left">
-                                                            @isset($method)
+                                                            @isset($benefit)
                                                                 <input type="text" class="form-control" id="name"
                                                                        name="name[uz]"
                                                                        placeholder="Название"
-                                                                       value="{{ old('name', isset($method) ? $method->name['uz'] : null) }}">
+                                                                       value="{{ old('name', isset($benefit) ? $benefit->name['uz'] : null) }}">
                                                             @else
                                                                 <input type="text" class="form-control" id="name"
                                                                        name="name[uz]"
                                                                        placeholder="Название"
-                                                                       value="{{--{{ old('name', isset($method) ? $method->name : null) }}--}}">
+                                                                       value="{{--{{ old('name', isset($benefit) ? $benefit->name['uz'] : null) }}--}}">
                                                             @endisset
                                                             <div class="form-control-position">
                                                                 <i class="feather icon-phone"></i>
                                                             </div>
                                                         </fieldset>
                                                     </div>
-
-                                                    {{--CK-editor--}}
-                                                    @error('description')
-                                                    <div class="alert alert-danger">{{ $message }}</div>
-                                                    @enderror
-                                                    <div class="col-12">
-                                                        <div class="text-bold-600 font-medium-2 mb-1">
-                                                            Описание
-                                                        </div>
-                                                        @isset($method)
-                                                            <textarea name="description[uz]" id="editor2" cols="30"
-                                                                      rows="10">{{ old('description', isset($method) ? $method->description['uz'] : null) }}</textarea>
-                                                        @else
-                                                            <textarea name="description[uz]" id="editor2" cols="30"
-                                                                      rows="10">{{ old('description', isset($method) ? $method->description['uz'] : null) }}</textarea>
-                                                        @endisset
-                                                    </div>
-                                                    {{--end-CK-editor--}}
-
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="col-12" style="margin-top: 20px">
-                                            @error('image')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
-                                            <div class="text-bold-600 font-medium-2 mb-1">
-                                                Картинка
-                                            </div>
-                                            <fieldset class="form-group">
-                                                <label for="basicInputFile">Загрузить</label>
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input"
-                                                           id="inputGroupFile01" name="image">
-                                                    <label class="custom-file-label" for="inputGroupFile01">Файлы
-                                                        типа:
-                                                        webp, jpeg, jpg, png</label>
-                                                </div>
-                                            </fieldset>
+                                        @error('image')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                        <div class="text-bold-600 font-medium-2 mb-1">
+                                            Картинка
                                         </div>
+                                        <fieldset class="form-group">
+                                            <label for="basicInputFile">Загрузить</label>
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input"
+                                                       id="inputGroupFile01" name="image">
+                                                <label class="custom-file-label" for="inputGroupFile01">Файлы
+                                                    типа:
+                                                    webp, jpeg, jpg, png</label>
+                                            </div>
+                                        </fieldset>
 
                                         <div class="card-body">
                                             <div class="row" style="display: inline-flex">
@@ -247,7 +187,7 @@
 
                                                 </div>
                                                 <div class="col-6">
-                                                    <a href="{{ route('methods.index') }}">
+                                                    <a href="{{ route('benefits.index') }}">
                                                         <button type="button"
                                                                 class="btn btn-outline-danger round mr-1 mb-1 waves-effect waves-light">
                                                             Отмена

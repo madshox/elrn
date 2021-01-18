@@ -31,7 +31,7 @@ export interface SwiperEvents {
    * @example
    * var swiper = new Swiper('.swiper-container', {
    *   init: false,
-   *   // other parameters
+   *   // other abouts
    * });
    * swiper.on('init', function() {
    *  // do something
@@ -42,7 +42,7 @@ export interface SwiperEvents {
    * @example
    * // Otherwise use it as the parameter:
    * var swiper = new Swiper('.swiper-container', {
-   *   // other parameters
+   *   // other abouts
    *   on: {
    *     init: function () {
    *       // do something

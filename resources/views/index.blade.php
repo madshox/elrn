@@ -189,7 +189,7 @@
     @endif
 
     <section class="courses" id="courses">
-        @if( ! $formats->isEmpty() )
+        @if( ! $themes->isEmpty() )
             <div class="accordion-collapse">
                 <div class="container">
                     <h2 class="title">Тематика электронных курсов</h2>
@@ -221,82 +221,67 @@
             </div>
         @endif
 
-        <div class="methodical" id="methodical">
-            <div class="container">
-                <h2 class="text-center">Методические приемы в электронных курсах</h2>
-                <div class="row">
-                    @foreach($methods as $method)
-                    <div class="col-lg-6">
-                        <div class="card d-flex">
-                            <img src="{{ Storage::url($method->image) }}" alt="">
-                            <h5>{{ $method->name() }}</h5>
-                            <div class="hidden-text">
-                                <p class="text">{{ strip_tags($method->description()) }}</p>
+        @if( ! $methods->isEmpty() )
+            <div class="methodical" id="methodical">
+                <div class="container">
+                    <h2 class="text-center">Методические приемы в электронных курсах</h2>
+                    <div class="row">
+                        @foreach($methods as $method)
+                            <div class="col-lg-6">
+                                <div class="card d-flex">
+                                    <img src="{{ Storage::url($method->image) }}" alt="">
+                                    <h5>{{ $method->name() }}</h5>
+                                    <div class="hidden-text">
+                                        <p class="text">{{ strip_tags($method->description()) }}</p>
+                                    </div>
+                                </div>
                             </div>
+                        @endforeach
+                        <div class="btn pt-5">
+                            <a href="#order-form">
+                                <button class="button">Заказать курс</button>
+                            </a>
                         </div>
                     </div>
+                </div>
+            </div>
+        @endif
+    </section>
+
+    @if( ! $technologies->isEmpty() )
+        <section class="about" id="about">
+            <div class="container py-5">
+                <h2 class="py-5">Технологии разработки</h2>
+                <div class="row">
+                    @foreach($technologies as $technology)
+                        <div class="col-lg-6 mb-3 t-scale animate__animated animate__backInLeft">
+                            <div class="title">
+                                <img src="{{ Storage::url($technology->image) }}" alt="">
+                                <h5>{{ $technology->name() }}</h5>
+                            </div>
+                            <p>{!! $technology->description() !!}</p>
+                        </div>
                     @endforeach
-                    <div class="btn pt-5">
-                        <a href="#order-form">
-                            <button class="button">Заказать курс</button>
-                        </a>
-                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
-    <section class="about" id="about">
-        <div class="container py-5">
-            <h2 class="py-5">Технологии разработки</h2>
-            <div class="row">
-                <div class="col-lg-6 mb-3 t-scale animate__animated animate__backInLeft">
-                    <div class="title">
-                        <img src="img/development-animate.svg" alt="">
-                        <h5>Средства разработки</h5>
-                    </div>
-                    <p>Мы разрабатываем курсы в формате SCORM и Tin Can API.
-                        Собираем курсы в авторских средах Articulate Storyline,
-                        CourseLab, iSpring Suite и в HTML5.
-                        Для сложных проектов разрабатываем специальный
-                        движок и административную часть.</p>
-                </div>
-                <div class="col-lg-6 mb-3 t-scale animate__animated animate__backInRight">
-                    <div class="title">
-                        <img src="img/operating-system-animate.svg" alt="">
-                        <h5>Поддержка курса в СДО</h5>
-                    </div>
-                    <p>Наши курсы универсальны и работают практически во всех системах дистанционного обучения:
-                        WebTutor, SAP SuccessFactors, Mirapolis LMS, ShareKnowledge, iSpring Online
-                        и другие.</p>
+    @if( ! $benefits->isEmpty() )
+        <div class="advantage" id="advantage">
+            <div class="container">
+                <h2 class="pb-5">Преимущества наших курсов</h2>
+                <div class="row">
+                    @foreach($benefits as $benefit)
+                        <div class="col-lg-3 col-sm-6 col-6 scale">
+                            <img class="img" src="{{ Storage::url($benefit->image) }}" alt="">
+                            <p>{{ $benefit->name() }}</p>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
-    </section>
-    <div class="advantage" id="advantage">
-        <div class="container">
-            <h2 class="pb-5">Преимущества наших курсов</h2>
-            <div class="row">
-                <div class="col-lg-3 col-sm-6 col-6 scale">
-                    <img class="img" src="img/advantage_icon1-min.png" alt="">
-                    <p>Уникальность</p>
-                </div>
-                <div class="col-lg-3 col-sm-6   col-6 scale">
-                    <img class="img" src="img/advantage_icon2-min.png" alt="">
-                    <p>Проработка материалов</p>
-                </div>
-                <div class="col-lg-3 col-sm-6   col-6 scale">
-                    <img class="img" src="img/advantage_icon3-min.png" alt="">
-                    <p>Экономия</p>
-                </div>
-                <div class="col-lg-3 col-sm-6   col-6 scale">
-                    <img class="img" src="img/advantage_icon4-min.png" alt="">
-                    <p>Адаптивный дизайн</p>
-                </div>
-
-            </div>
-        </div>
-    </div>
+    @endif
 
     <section class="projects" id="projects">
         <div class="favourite">
@@ -345,163 +330,66 @@
         </div>
     </section>
 
-    <section class="process" id="process">
-        <div class="container">
-            <h2 class="py-5">Процесс разработки электронных курсов</h2>
-            <div class="row">
-                <div class="col-md-6 col-12 hover">
-                    <img src="img/process_img1-min.png" alt="">
-                    <p class="">Получаем ваш запрос,
-                        проводим анализ, изучаем имеющиеся материалы</p>
-                </div>
-                <div class="col-md-6 col-12 hover">
-                    <img src="img/process_img2-min.png" alt="">
-                    <p class="">Выбираем концепцию, разрабатываем сценарий
-                        курсов</p>
-                </div>
-                <div class="col-md-6 col-12 hover">
-                    <img src="img/process_img3-min.png" alt="">
-                    <p class="">Разрабатываем дизайн
-                        и иллюстрации на основе
-                        сценария</p>
-                </div>
-                <div class="col-md-6 col-12 hover">
-                    <img src="img/process_img4-min.png" alt="">
-                    <p class="">Собираем курсы, проводим
-                        тестирование
-                        и отладку</p>
-                </div>
-                <div class="col-md-6 col-12 hover">
-                    <img src="img/process_img5-min.png" alt="">
-                    <p class="">Публикуем курсы на
-                        вашем сайте или в системе
-                        дистанционного обучения.</p>
-                </div>
-                <div class="col-md-6 col-12 hover">
-                    <img src="img/process_img6-min.png" alt="">
-                    <p class="">Обеспечиваем
-                        техническую
-                        поддержку курсов.</p>
+    @if( ! $benefits->isEmpty() )
+        <section class="process" id="process">
+            <div class="container">
+                <h2 class="py-5">Процесс разработки электронных курсов</h2>
+                <div class="row">
+                    @foreach($processes as $process)
+                        <div class="col-md-6 col-12 hover">
+                            <img src="{{ Storage::url($process->image) }}" alt="">
+                            <p class="">{!! $process->description() !!}</p>
+                        </div>
+                    @endforeach
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
-    <section class="cost" id="cost">
-        <div class="container">
-            <h2 class="py-5">Стоимость электронных курсов</h2>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 col-12 mb-md-4 mb-4">
-                    <div class="box">
-                        <div class="content">
-                            <h5>Слайдовый курс</h5>
-                            <p class="date">До 50 экранов</p>
-                            <p class="description">Интерактивный курс с форматом подачи материалов в контексте
-                                истории.
-                            </p>
+    @if( ! $costs->isEmpty() )
+        <section class="cost" id="cost">
+            <div class="container">
+                <h2 class="py-5">Стоимость электронных курсов</h2>
+                <div class="row">
+                    @foreach($costs as $cost)
+                        <div class="col-lg-4 col-md-6 col-12 mb-md-4 mb-4">
+                            <div class="box">
+                                <div class="content">
+                                    {!! $cost->description() !!}
+                                </div>
+                                <p class="price">{{ $cost->name() }}</p>
+                            </div>
                         </div>
-                        <p class="price">от 14 355 000 сум</p>
-                    </div>
+                    @endforeach
                 </div>
-                <div class="col-lg-4 col-md-6 col-12 mb-md-4 mb-4">
-                    <div class="box">
-                        <div class="content">
-                            <h5>Видеокурс</h5>
-                            <p class="date">До 30 экранов</p>
-                            <p class="description">Обучающий курс в формате видео-лекции: транслятор информации –
-                                преподаватель, его речь сопровождается тезисами и элементами инфографики.</p>
-                        </div>
-                        <p class="price">от 4 350 000 сум</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 mb-md-4 mb-4">
-                    <div class="box">
-                        <div class="content">
-                            <h5>Одностраничный курс</h5>
-                            <p class="date">До 20 экранов</p>
-                            <p class="description">Обучающий курс в формате html-страницы с сюжетной линией.</p>
-                        </div>
-                        <p class="price">от 28 855 000 сум</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 mb-sm-3 mb-4">
-                    <div class="box">
-                        <div class="content">
-                            <h5>Игровой тренажер</h5>
-                            <p class="date">До 20 кейсов</p>
-                            <p class="description">Диалоговый тренажер на отработку навыка продаж.</p>
-                        </div>
-                        <div class="price1">
-                            <p class="price">от 43 355 000 сум</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 mb-sm-3 mb-4">
-                    <div class="box">
-                        <div class="content">
-                            <h5>Бизнес-симулятор</h5>
-                            <p class="date">До 30 экранов</p>
-                            <p class="description">Разработка административной части, вариативных сценариев развития
-                                ситуаций, матмодели и игровой модели, визуализация ситуаций, построение отчетов и
-                                прочее.</p>
-                        </div>
-                        <p class="price">от 57 855 000 сум</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 mb-xs-3 mb-4">
-                    <div class="box">
-                        <div class="content">
-                            <p class="description">Стоимость курса зависит от качества и объема ваших исходных
-                                материалов, выбранного формата
-                                реализации, сложности технических и визуальных решений.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="order py-5">
-                <h3 class="pb-4">Чтобы рассчитать стоимость решения вашей задачи,
-                    позвоните нам или оставьте заявку.</h3>
-                <div class="btn">
-                    <a href="#order-form">
-                        <button class="button mt-5">Заказать электронный курс</button>
-                    </a>
+                <div class="order py-5">
+                    <h3 class="pb-4">Чтобы рассчитать стоимость решения вашей задачи,
+                        позвоните нам или оставьте заявку.</h3>
+                    <div class="btn">
+                        <a href="#order-form">
+                            <button class="button mt-5">Заказать электронный курс</button>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
-    <section class="trust-us" id="trust-us">
-        <div class="container py-5">
-            <h2 class="py-5">Нам доверяют</h2>
-            <div class="row align-items-center">
-                <div class="col-md-2 col-sm-3 col-4 pb-3 "><img src="img/trust-us(1)-min.png" alt=""></div>
-                <div class="col-md-2 col-sm-3 col-4 pb-3 "><img src="img/trust-us(2)-min.png" alt=""></div>
-                <div class="col-md-2 col-sm-3 col-4 pb-3 "><img src="img/trust-us(3)-min.png" alt=""></div>
-                <div class="col-md-2 col-sm-3 col-4 pb-3 "><img src="img/trust-us(4)-min.png" alt=""></div>
-                <div class="col-md-2 col-sm-3 col-4 pb-3 "><img src="img/trust-us(5)-min.png" alt=""></div>
-                <div class="col-md-2 col-sm-3 col-4 pb-3 "><img src="img/trust-us(6)-min.png" alt=""></div>
-                <div class="col-md-2 col-sm-3 col-4 pb-3 "><img src="img/trust-us(7)-min.png" alt=""></div>
-                <div class="col-md-2 col-sm-3 col-4 pb-3 "><img src="img/trust-us(8)-min.png" alt=""></div>
-                <div class="col-md-2 col-sm-3 col-4 pb-3 "><img src="img/trust-us(9)-min.png" alt=""></div>
-                <div class="col-md-2 col-sm-3 col-4 pb-3 "><img src="img/trust-us(10)-min.png" alt=""></div>
-                <div class="col-md-2 col-sm-3 col-4 pb-3 "><img src="img/trust-us(11)-min.png" alt=""></div>
-                <div class="col-md-2 col-sm-3 col-4 pb-3 "><img src="img/trust-us(12)-min.png" alt=""></div>
-                <div class="col-md-2 col-sm-3 col-4 pb-3 "><img src="img/trust-us(13)-min.png" alt=""></div>
-                <div class="col-md-2 col-sm-3 col-4 pb-3 "><img src="img/trust-us(14)-min.png" alt=""></div>
-                <div class="col-md-2 col-sm-3 col-4 pb-3 "><img src="img/trust-us(15)-min.png" alt=""></div>
-                <div class="col-md-2 col-sm-3 col-4 pb-3 "><img src="img/trust-us(16)-min.png" alt=""></div>
-                <div class="col-md-2 col-sm-3 col-4 pb-3 "><img src="img/trust-us(17)-min.png" alt=""></div>
-                <div class="col-md-2 col-sm-3 col-4 pb-3 "><img src="img/trust-us(18)-min.png" alt=""></div>
-                <div class="col-md-2 col-sm-3 col-4 pb-3 "><img src="img/trust-us(19)-min.png" alt=""></div>
-                <div class="col-md-2 col-sm-3 col-4 pb-3 "><img src="img/trust-us(20)-min.png" alt=""></div>
-                <div class="col-md-2 col-sm-3 col-4 pb-3 "><img src="img/trust-us(21)-min.png" alt=""></div>
-                <div class="col-md-2 col-sm-3 col-4 pb-3 "><img src="img/trust-us(22)-min.png" alt=""></div>
-                <div class="col-md-2 col-sm-3 col-4 pb-3 "><img src="img/trust-us(23)-min.png" alt=""></div>
-                <div class="col-md-2 col-sm-3 col-4 pb-3 "><img src="img/trust-us(24)-min.png" alt=""></div>
+    @if( ! $brends->isEmpty() )
+        <section class="trust-us" id="trust-us">
+            <div class="container py-5">
+                <h2 class="py-5">Нам доверяют</h2>
+                @foreach($brends as $brend)
+                    <div class="row align-items-center">
+                        <div class="col-md-2 col-sm-3 col-4 pb-3 "><img src="{{ Storage::url($brend->image) }}" alt="">
+                        </div>
+
+                    </div>
+                @endforeach
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
     <section class="review" id="review">
         <div class="container">
@@ -578,36 +466,49 @@
             <h2>Форма заказа электронного курса</h2>
             <h4 class="py-3">Закажите электронный курс и получите концепцию и прототип дизайна вашего курса
                 бесплатно</h4>
-            <form action="#order-form">
+            <form class="my-form" action="{{ route('get_order') }}" method="POST">
+                @csrf
+                @if(session()->has('warning'))
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <strong>{{ session()->get('warning') }}</strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
                 <div class="form mt-5">
-                    <input class="text p-3 mb-3" type="text" id="name" placeholder="Ваше имя" required="">
-                    <input class="number p-3 mb-5" type="tel" id="tel" placeholder="Телефон" required="">
-                    <button class="button my-5" type="submit" data-toggle="modal" data-target="#exampleModal">Отправить
-                        заявку
-                    </button>
+                    <input class="text p-3 mb-3" placeholder="Ваше имя" name="name">
+                    <input class="number p-3 mb-5" placeholder="Телефон" name="phone">
+                        <button class="button my-5" type="submit">Заказать курс</button>
                 </div>
             </form>
 
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
-                 aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Ваша заявка успешно отправлена</h5>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p>Наши операторы свяжутся с Вами</p>
-                        </div>
-                        <div class="modal-footer">
+{{--            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"--}}
+{{--                 aria-hidden="true">--}}
+{{--                <div class="modal-dialog" role="document">--}}
+{{--                    <div class="modal-content">--}}
+{{--                        <div class="modal-header">--}}
+{{--                            <h5 class="modal-title" id="exampleModalLabel">Ваша заявка успешно отправлена</h5>--}}
+{{--                            <button class="close" type="button" data-dismiss="modal" aria-label="close">--}}
+{{--                                <span aria-hidden="true">&times;</span>--}}
+{{--                            </button>--}}
+{{--                        </div>--}}
+{{--                        <div class="modal-body">--}}
+{{--                            <p>Наши операторы свяжутся с Вами</p>--}}
+{{--                        </div>--}}
+{{--                        <div class="modal-footer">--}}
 
-                            <button class="btn btn-success" data-dismiss="modal">Закрыть</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+{{--                            <button class="btn btn-success" data-dismiss="modal">Закрыть</button>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
         </div>
     </section>
 
@@ -616,35 +517,36 @@
 <footer id="footer">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <div class="contacts my-5">
-                    <p class="social-number mb-3"><a href="tel:+998998771547">+998 99 877-15-47</a></p>
-                    <p>г. Ташкент, ул. Мукумий, дом 34
-                        Ориентир: Спорт товар, оптовый рынок</p>
-                    <p class="mt-5">Umbrella Soft © 2009-2020</p>
-                </div>
-            </div>
-            <div class="col-md-3"></div>
-            <div class="col-md-5">
-                <div class="row h-100">
-                    <div class="col-lg-6 col-12">
-                        <a href="#" class="face">
-                            <p class="social-number">Facebook</p>
-                        </a>
-                        <a href="#" class="mail">
-                            <p class="social-number ">info@usoft.uz</p>
-                        </a>
-                    </div>
-                    <div class="col-lg-6 col-12">
-                        <a href="#" class="insta">
-                            <p class="social-number inst">Instagram</p>
-                        </a>
-                        <a href="#" class="twit">
-                            <p class="social-number ">Twitter</p>
-                        </a>
+            @foreach($abouts as $about)
+                <div class="col-md-4">
+                    <div class="contacts my-5">
+                        <p class="social-number mb-3"><a href="tel:{{ $about->number }}">{{ $about->number }}</a></p>
+                        {!! $about->description() !!}
+                        <p class="mt-5">Umbrella Soft © 2009-2020</p>
                     </div>
                 </div>
-            </div>
+                <div class="col-md-3"></div>
+                <div class="col-md-5">
+                    <div class="row h-100">
+                        <div class="col-lg-6 col-12">
+                            <a href="{{ $about->f_link }}" class="face">
+                                <p class="social-number">Facebook</p>
+                            </a>
+                            <a href="{{ $about->mail_link }}" class="mail">
+                                <p class="social-number ">info@usoft.uz</p>
+                            </a>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <a href="{{ $about->i_link }}" class="insta">
+                                <p class="social-number inst">Instagram</p>
+                            </a>
+                            <a href="{{ $about->t_link }}" class="twit">
+                                <p class="social-number ">Twitter</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
 </footer>
@@ -658,6 +560,13 @@
 <!-- My scripts -->
 <script defer="" src="{{ asset('front/js/main.min.js') }}"></script>
 
+<script>
+    @if(session('success'))
+    $(function () {
+        $('#exampleModal').modal('show')
+    })
+    @endif
+</script>
 
 </body>
 

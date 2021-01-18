@@ -150,8 +150,20 @@
                         class="menu-title" data-i18n="Calender">Тематика</span></a>
             <li class=" nav-item"><a href="{{ route('methods.index') }}"><i
                         class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">Методы</span></a>
-            <li class=" nav-item"><a href="{{--{{ route('abouts.index') }}--}}"><i
-                        class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">О нас</span></a>
+            <li class=" nav-item"><a href="{{ route('technologies.index') }}"><i
+                        class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">Технологии</span></a>
+            </li>
+            <li class=" nav-item"><a href="{{ route('benefits.index') }}"><i
+                        class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">Преимущества</span></a>
+            </li>
+            <li class=" nav-item"><a href="{{ route('processes.index') }}"><i
+                        class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">Процессы</span></a>
+            </li>
+            <li class=" nav-item"><a href="{{ route('brends.index') }}"><i
+                        class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">Нам доверяют</span></a>
+            </li>
+            <li class=" nav-item"><a href="{{ route('abouts.index') }}"><i
+                        class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">Настройки</span></a>
             </li>
 
 

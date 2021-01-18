@@ -21,7 +21,7 @@ export interface ThumbsEvents {}
 
 export interface ThumbsOptions {
   /**
-   * Swiper instance of swiper used as thumbs or object with Swiper parameters to initialize thumbs swiper
+   * Swiper instance of swiper used as thumbs or object with Swiper abouts to initialize thumbs swiper
    *
    * @default null
    */

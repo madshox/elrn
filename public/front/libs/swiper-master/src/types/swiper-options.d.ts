@@ -70,7 +70,7 @@ export interface SwiperOptions {
   virtualTranslate?: boolean;
 
   /**
-   * Swiper width (in px). Parameter allows to force Swiper width.
+   * Swiper width (in px). Setting allows to force Swiper width.
    * Useful only if you initialize Swiper when it is hidden and in SSR and Test environments for correct Swiper initialization
    *
    * @note Setting this parameter will make Swiper not responsive
@@ -79,7 +79,7 @@ export interface SwiperOptions {
   width?: number | null;
 
   /**
-   * Swiper height (in px). Parameter allows to force Swiper height.
+   * Swiper height (in px). Setting allows to force Swiper height.
    * Useful only if you initialize Swiper when it is hidden and in SSR and Test environments for correct Swiper initialization
    *
    * @note Setting this parameter will make Swiper not responsive
@@ -111,7 +111,7 @@ export interface SwiperOptions {
   nested?: boolean;
 
   /**
-   * If enabled (by default) and navigation elements' parameters passed as a string (like ".pagination")
+   * If enabled (by default) and navigation elements' abouts passed as a string (like ".pagination")
    * then Swiper will look for such elements through child elements first.
    * Applies for pagination, prev/next buttons and scrollbar elements
    *

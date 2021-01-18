@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@isset($method)
+@isset($process)
     @section('title', 'Редактировать ')
 @else
     @section('title', 'Создать')
@@ -18,7 +18,7 @@
                     <div class="col-12">
                         <div class="card" style="">
                             <div class="card-header">
-                                @isset($method)
+                                @isset($process)
                                     <h4 class="card-title">Редактировать</h4>
                                 @else
                                     <h4 class="card-title">Создать</h4>
@@ -26,13 +26,13 @@
                             </div>
                             {{--start-tab--}}
                             <form method="POST" enctype="multipart/form-data"
-                                  @isset($method)
-                                  action="{{ route('methods.update', $method) }}"
+                                  @isset($process)
+                                  action="{{ route('processes.update', $process) }}"
                                   @else
-                                  action="{{ route('methods.store') }}"
+                                  action="{{ route('processes.store') }}"
                                 @endisset>
 
-                                @isset($method)
+                                @isset($process)
                                     @method('PUT')
                                 @endisset
 
@@ -69,32 +69,6 @@
                                                  aria-labelledby="account-tab" role="tabpanel">
 
                                                 <div class="row">
-                                                    <div class="col-6">
-                                                        @error('name')
-                                                        <div class="alert alert-danger">{{ $message }}</div>
-                                                        @enderror
-                                                        <div class="text-bold-600 font-medium-2 mb-1">
-                                                            Название
-                                                        </div>
-                                                        <fieldset
-                                                            class="form-group position-relative has-icon-left input-divider-left">
-                                                            @isset($method)
-                                                                <input type="text" class="form-control" id="name"
-                                                                       name="name[ru]"
-                                                                       placeholder="Название"
-                                                                       value="{{ old('name', isset($method) ? $method->name['ru'] : null) }}">
-                                                            @else
-                                                                <input type="text" class="form-control" id="name"
-                                                                       name="name[ru]"
-                                                                       placeholder="Название"
-                                                                       value="{{--{{ old('name', isset($method) ? $method->name : null) }}--}}">
-                                                            @endisset
-                                                            <div class="form-control-position">
-                                                                <i class="feather icon-phone"></i>
-                                                            </div>
-                                                        </fieldset>
-                                                    </div>
-
                                                     {{--CK-editor--}}
                                                     @error('description')
                                                     <div class="alert alert-danger">{{ $message }}</div>
@@ -103,12 +77,12 @@
                                                         <div class="text-bold-600 font-medium-2 mb-1">
                                                             Описание
                                                         </div>
-                                                        @isset($method)
-                                                            <textarea name="description[ru]" id="editor" cols="30"
-                                                                      rows="10">{{ old('description', isset($method) ? $method->description['ru'] : null) }}</textarea>
+                                                        @isset($process)
+                                                        <textarea name="description[ru]" id="editor" cols="30"
+                                                                  rows="10">{{ old('description', isset($process) ? $process->description['ru'] : null) }}</textarea>
                                                         @else
                                                             <textarea name="description[ru]" id="editor" cols="30"
-                                                                      rows="10">{{ old('description', isset($method) ? $method->description['ru'] : null) }}</textarea>
+                                                                      rows="10">{{ old('description', isset($process) ? $process->description['ru'] : null) }}</textarea>
                                                         @endisset
                                                     </div>
                                                     {{--end-CK-editor--}}
@@ -118,31 +92,6 @@
                                             <div class="tab-pane" id="social"
                                                  aria-labelledby="social-tab" role="tabpanel">
                                                 <div class="row">
-                                                    <div class="col-6">
-                                                        @error('name')
-                                                        <div class="alert alert-danger">{{ $message }}</div>
-                                                        @enderror
-                                                        <div class="text-bold-600 font-medium-2 mb-1">
-                                                            Название
-                                                        </div>
-                                                        <fieldset
-                                                            class="form-group position-relative has-icon-left input-divider-left">
-                                                            @isset($method)
-                                                                <input type="text" class="form-control" id="name"
-                                                                       name="name[en]"
-                                                                       placeholder="Название"
-                                                                       value="{{ old('name', isset($method) ? $method->name['en'] : null) }}">
-                                                            @else
-                                                                <input type="text" class="form-control" id="name"
-                                                                       name="name[en]"
-                                                                       placeholder="Название"
-                                                                       value="{{--{{ old('name', isset($method) ? $method->name : null) }}--}}">
-                                                            @endisset
-                                                            <div class="form-control-position">
-                                                                <i class="feather icon-phone"></i>
-                                                            </div>
-                                                        </fieldset>
-                                                    </div>
 
                                                     {{--CK-editor--}}
                                                     @error('description')
@@ -152,12 +101,12 @@
                                                         <div class="text-bold-600 font-medium-2 mb-1">
                                                             Описание
                                                         </div>
-                                                        @isset($method)
+                                                        @isset($process)
                                                             <textarea name="description[en]" id="editor1" cols="30"
-                                                                      rows="10">{{ old('description', isset($method) ? $method->description['en'] : null) }}</textarea>
+                                                                      rows="10">{{ old('description', isset($process) ? $process->description['en'] : null) }}</textarea>
                                                         @else
                                                             <textarea name="description[en]" id="editor1" cols="30"
-                                                                      rows="10">{{ old('description', isset($method) ? $method->description['en'] : null) }}</textarea>
+                                                                      rows="10">{{ old('description', isset($process) ? $process->description['en'] : null) }}</textarea>
                                                         @endisset
                                                     </div>
                                                     {{--end-CK-editor--}}
@@ -168,31 +117,6 @@
                                             <div class="tab-pane" id="profile"
                                                  aria-labelledby="profile-tab" role="tabpanel">
                                                 <div class="row">
-                                                    <div class="col-6">
-                                                        @error('name')
-                                                        <div class="alert alert-danger">{{ $message }}</div>
-                                                        @enderror
-                                                        <div class="text-bold-600 font-medium-2 mb-1">
-                                                            Название
-                                                        </div>
-                                                        <fieldset
-                                                            class="form-group position-relative has-icon-left input-divider-left">
-                                                            @isset($method)
-                                                                <input type="text" class="form-control" id="name"
-                                                                       name="name[uz]"
-                                                                       placeholder="Название"
-                                                                       value="{{ old('name', isset($method) ? $method->name['uz'] : null) }}">
-                                                            @else
-                                                                <input type="text" class="form-control" id="name"
-                                                                       name="name[uz]"
-                                                                       placeholder="Название"
-                                                                       value="{{--{{ old('name', isset($method) ? $method->name : null) }}--}}">
-                                                            @endisset
-                                                            <div class="form-control-position">
-                                                                <i class="feather icon-phone"></i>
-                                                            </div>
-                                                        </fieldset>
-                                                    </div>
 
                                                     {{--CK-editor--}}
                                                     @error('description')
@@ -202,12 +126,12 @@
                                                         <div class="text-bold-600 font-medium-2 mb-1">
                                                             Описание
                                                         </div>
-                                                        @isset($method)
+                                                        @isset($process)
                                                             <textarea name="description[uz]" id="editor2" cols="30"
-                                                                      rows="10">{{ old('description', isset($method) ? $method->description['uz'] : null) }}</textarea>
+                                                                      rows="10">{{ old('description', isset($process) ? $process->description['uz'] : null) }}</textarea>
                                                         @else
                                                             <textarea name="description[uz]" id="editor2" cols="30"
-                                                                      rows="10">{{ old('description', isset($method) ? $method->description['uz'] : null) }}</textarea>
+                                                                      rows="10">{{ old('description', isset($process) ? $process->description['uz'] : null) }}</textarea>
                                                         @endisset
                                                     </div>
                                                     {{--end-CK-editor--}}
@@ -247,7 +171,7 @@
 
                                                 </div>
                                                 <div class="col-6">
-                                                    <a href="{{ route('methods.index') }}">
+                                                    <a href="{{ route('processes.index') }}">
                                                         <button type="button"
                                                                 class="btn btn-outline-danger round mr-1 mb-1 waves-effect waves-light">
                                                             Отмена

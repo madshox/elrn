@@ -32,7 +32,7 @@
                                   action="{{ route('themes.store') }}"
                                 @endisset>
 
-                                @isset($variant)
+                                @isset($theme)
                                     @method('PUT')
                                 @endisset
 

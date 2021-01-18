@@ -38,7 +38,7 @@ interface SwiperClass<Events> {
 
 interface Swiper extends SwiperClass<SwiperEvents> {
   /**
-   * Object with passed initialization parameters
+   * Object with passed initialization abouts
    */
   params: SwiperOptions;
 

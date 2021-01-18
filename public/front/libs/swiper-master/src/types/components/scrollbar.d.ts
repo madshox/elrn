@@ -51,7 +51,7 @@ export interface ScrollbarEvents {
 }
 
 /**
- * Object with scrollbar parameters.
+ * Object with scrollbar abouts.
  *
  * @example
  * var mySwiper = new Swiper('.swiper-container', {

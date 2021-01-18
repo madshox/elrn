@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Методы')
+@section('title', 'Технологии')
 
 @section('content')
     <div class="app-content content">
@@ -12,7 +12,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">Варианты поставки</h4>
-                            <a href="{{ route('methods.create') }}"><button type="button" class="btn btn-outline-primary mr-1 mb-1 waves-effect waves-light"><i class="feather icon-plus"></i>Добавить</button></a>
+                            <a href="{{ route('technologies.create') }}"><button type="button" class="btn btn-outline-primary mr-1 mb-1 waves-effect waves-light"><i class="feather icon-plus"></i>Добавить</button></a>
                         </div>
                         <div class="card-content">
                             <div class="card-body">
@@ -27,14 +27,14 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($methods as $method)
+                                        @foreach($technologies as $technology)
                                             <tr>
-                                                <th scope="row">{{ $method->id }}</th>
-                                                <td>{!! $method->name() !!}</td>
-                                                <td style="text-align: center;"><img src="{{ Storage::url($method->image) }}" height="auto" width="150" alt=""></td>
+                                                <th scope="row">{{ $technology->id }}</th>
+                                                <td>{!! $technology->name() !!}</td>
+                                                <td style="text-align: center;"><img src="{{ Storage::url($technology->image) }}" height="auto" width="150" alt=""></td>
                                                 <td style="display: flex; justify-content: center">
-                                                    <form action="{{ route('methods.destroy', $method) }}" method="POST">
-                                                        <a href="{{ route('methods.edit', $method) }}"><button type="button" class="btn btn-icon btn-warning mr-1 mb-1 waves-effect waves-light">
+                                                    <form action="{{ route('technologies.destroy', $technology) }}" method="POST">
+                                                        <a href="{{ route('technologies.edit', $technology) }}"><button type="button" class="btn btn-icon btn-warning mr-1 mb-1 waves-effect waves-light">
                                                                 <div class="fonticon-wrap">
                                                                     <i class="feather icon-edit"></i>
                                                                 </div>

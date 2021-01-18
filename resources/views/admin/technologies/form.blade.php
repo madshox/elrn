@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@isset($method)
+@isset($technology)
     @section('title', 'Редактировать ')
 @else
     @section('title', 'Создать')
@@ -18,7 +18,7 @@
                     <div class="col-12">
                         <div class="card" style="">
                             <div class="card-header">
-                                @isset($method)
+                                @isset($technology)
                                     <h4 class="card-title">Редактировать</h4>
                                 @else
                                     <h4 class="card-title">Создать</h4>
@@ -26,13 +26,13 @@
                             </div>
                             {{--start-tab--}}
                             <form method="POST" enctype="multipart/form-data"
-                                  @isset($method)
-                                  action="{{ route('methods.update', $method) }}"
+                                  @isset($technology)
+                                  action="{{ route('technologies.update', $technology) }}"
                                   @else
-                                  action="{{ route('methods.store') }}"
+                                  action="{{ route('technologies.store') }}"
                                 @endisset>
 
-                                @isset($method)
+                                @isset($technology)
                                     @method('PUT')
                                 @endisset
 
@@ -78,16 +78,16 @@
                                                         </div>
                                                         <fieldset
                                                             class="form-group position-relative has-icon-left input-divider-left">
-                                                            @isset($method)
+                                                            @isset($technology)
                                                                 <input type="text" class="form-control" id="name"
                                                                        name="name[ru]"
                                                                        placeholder="Название"
-                                                                       value="{{ old('name', isset($method) ? $method->name['ru'] : null) }}">
+                                                                       value="{{ old('name', isset($technology) ? $technology->name['ru'] : null) }}">
                                                             @else
                                                                 <input type="text" class="form-control" id="name"
                                                                        name="name[ru]"
                                                                        placeholder="Название"
-                                                                       value="{{--{{ old('name', isset($method) ? $method->name : null) }}--}}">
+                                                                       value="{{--{{ old('name', isset($format) ? $format->name : null) }}--}}">
                                                             @endisset
                                                             <div class="form-control-position">
                                                                 <i class="feather icon-phone"></i>
@@ -103,12 +103,12 @@
                                                         <div class="text-bold-600 font-medium-2 mb-1">
                                                             Описание
                                                         </div>
-                                                        @isset($method)
+                                                        @isset($technology)
                                                             <textarea name="description[ru]" id="editor" cols="30"
-                                                                      rows="10">{{ old('description', isset($method) ? $method->description['ru'] : null) }}</textarea>
+                                                                      rows="10">{{ old('description', isset($technology) ? $technology->description['ru'] : null) }}</textarea>
                                                         @else
                                                             <textarea name="description[ru]" id="editor" cols="30"
-                                                                      rows="10">{{ old('description', isset($method) ? $method->description['ru'] : null) }}</textarea>
+                                                                      rows="10">{{ old('description', isset($technology) ? $technology->description['ru'] : null) }}</textarea>
                                                         @endisset
                                                     </div>
                                                     {{--end-CK-editor--}}
@@ -127,16 +127,16 @@
                                                         </div>
                                                         <fieldset
                                                             class="form-group position-relative has-icon-left input-divider-left">
-                                                            @isset($method)
+                                                            @isset($technology)
                                                                 <input type="text" class="form-control" id="name"
                                                                        name="name[en]"
                                                                        placeholder="Название"
-                                                                       value="{{ old('name', isset($method) ? $method->name['en'] : null) }}">
+                                                                       value="{{ old('name', isset($technology) ? $technology->name['en'] : null) }}">
                                                             @else
                                                                 <input type="text" class="form-control" id="name"
                                                                        name="name[en]"
                                                                        placeholder="Название"
-                                                                       value="{{--{{ old('name', isset($method) ? $method->name : null) }}--}}">
+                                                                       value="{{--{{ old('name', isset($format) ? $format->name : null) }}--}}">
                                                             @endisset
                                                             <div class="form-control-position">
                                                                 <i class="feather icon-phone"></i>
@@ -152,12 +152,12 @@
                                                         <div class="text-bold-600 font-medium-2 mb-1">
                                                             Описание
                                                         </div>
-                                                        @isset($method)
+                                                        @isset($technology)
                                                             <textarea name="description[en]" id="editor1" cols="30"
-                                                                      rows="10">{{ old('description', isset($method) ? $method->description['en'] : null) }}</textarea>
+                                                                      rows="10">{{ old('description', isset($technology) ? $technology->description['en'] : null) }}</textarea>
                                                         @else
                                                             <textarea name="description[en]" id="editor1" cols="30"
-                                                                      rows="10">{{ old('description', isset($method) ? $method->description['en'] : null) }}</textarea>
+                                                                      rows="10">{{ old('description', isset($technology) ? $technology->description['en'] : null) }}</textarea>
                                                         @endisset
                                                     </div>
                                                     {{--end-CK-editor--}}
@@ -177,16 +177,16 @@
                                                         </div>
                                                         <fieldset
                                                             class="form-group position-relative has-icon-left input-divider-left">
-                                                            @isset($method)
+                                                            @isset($technology)
                                                                 <input type="text" class="form-control" id="name"
                                                                        name="name[uz]"
                                                                        placeholder="Название"
-                                                                       value="{{ old('name', isset($method) ? $method->name['uz'] : null) }}">
+                                                                       value="{{ old('name', isset($technology) ? $technology->name['uz'] : null) }}">
                                                             @else
                                                                 <input type="text" class="form-control" id="name"
                                                                        name="name[uz]"
                                                                        placeholder="Название"
-                                                                       value="{{--{{ old('name', isset($method) ? $method->name : null) }}--}}">
+                                                                       value="{{--{{ old('name', isset($format) ? $format->name : null) }}--}}">
                                                             @endisset
                                                             <div class="form-control-position">
                                                                 <i class="feather icon-phone"></i>
@@ -202,12 +202,12 @@
                                                         <div class="text-bold-600 font-medium-2 mb-1">
                                                             Описание
                                                         </div>
-                                                        @isset($method)
+                                                        @isset($technology)
                                                             <textarea name="description[uz]" id="editor2" cols="30"
-                                                                      rows="10">{{ old('description', isset($method) ? $method->description['uz'] : null) }}</textarea>
+                                                                      rows="10">{{ old('description', isset($technology) ? $technology->description['uz'] : null) }}</textarea>
                                                         @else
                                                             <textarea name="description[uz]" id="editor2" cols="30"
-                                                                      rows="10">{{ old('description', isset($method) ? $method->description['uz'] : null) }}</textarea>
+                                                                      rows="10">{{ old('description', isset($technology) ? $technology->description['uz'] : null) }}</textarea>
                                                         @endisset
                                                     </div>
                                                     {{--end-CK-editor--}}
@@ -247,7 +247,7 @@
 
                                                 </div>
                                                 <div class="col-6">
-                                                    <a href="{{ route('methods.index') }}">
+                                                    <a href="{{ route('technologies.index') }}">
                                                         <button type="button"
                                                                 class="btn btn-outline-danger round mr-1 mb-1 waves-effect waves-light">
                                                             Отмена
