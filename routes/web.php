@@ -19,10 +19,7 @@ Route::post('/order', 'MainController@order')->name('get_order');
 
 Auth::routes();
 
-Route::group([
-    'middleware' => 'auth',
-    'namespace' => 'Admin',
-], function () {
+Route::group(['middleware' => 'auth', 'namespace' => 'Admin'], function () {
     Route::group(['middleware' => 'is_admin'], function () {
         Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
@@ -36,5 +33,6 @@ Route::group([
         Route::resource('/costs', 'CostController');
         Route::resource('/brends', 'BrendController');
         Route::resource('/abouts', 'AboutController');
+        Route::resource('/comments', 'CommentController');
     });
 });

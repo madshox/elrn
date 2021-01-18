@@ -45,15 +45,10 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/app-assets/css/plugins/tour/tour.css') }}">
     <!-- END: Page CSS-->
 
-    <script src="https://cdn.tiny.cloud/1/9doif7wd3u8cfms5odq10lzc6d77hiypvo2m021glx355ffh/tinymce/5/tinymce.min.js"
-            referrerpolicy="origin"></script>
-
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/css/style.css') }}">
     <!-- END: Custom CSS-->
 
-    <!-- Include stylesheet -->
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
 </head>
 <!-- END: Head-->
@@ -137,9 +132,6 @@
             </li>
             <li class=" navigation-header"><span>Apps</span>
             </li>
-            <li class=" nav-item"><a href="app-email.html"><i class="feather icon-mail"></i><span class="menu-title"
-                                                                                                  data-i18n="Email">Email</span></a>
-            </li>
             <li class=" nav-item"><a href="{{ route('variants.index') }}"><i
                         class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">Варианты поставки</span></a>
             </li>
@@ -164,6 +156,9 @@
             </li>
             <li class=" nav-item"><a href="{{ route('abouts.index') }}"><i
                         class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">Настройки</span></a>
+            </li>
+            <li class=" nav-item"><a href="{{ route('comments.index') }}"><i
+                        class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">Кооментарии</span></a>
             </li>
 
 

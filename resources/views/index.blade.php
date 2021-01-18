@@ -195,19 +195,21 @@
                     <h2 class="title">Тематика электронных курсов</h2>
 
                     <div class="accordions" id="accordionExample">
-                        @foreach($themes as $theme)
+{{--                        <span>{{ $i = 0 }}</span>--}}
+                        @foreach($themes as $key => $theme)
+{{--                            {{ $i++ }}--}}
                             <div class="card">
                                 <div class="card-header" id="headingOne">
                                     <div class="mb-0">
                                         <div class="text-left collapsed" data-toggle="collapse"
-                                             data-target="#collapseOne"
-                                             aria-expanded="false" aria-controls="collapseOne">
+                                             data-target="#collapse{{ $key }}"
+                                             aria-expanded="false" aria-controls="collapse{{ $key }}">
                                             <p class="header_title">{{ $theme->name() }}</p>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                                <div id="collapse{{ $key }}" class="collapse" aria-labelledby="headingOne"
                                      data-parent="#accordionExample">
                                     <div class="card-body">
                                         <p class="text">{{ strip_tags($theme->description()) }}
@@ -397,59 +399,22 @@
 
             <div class="swiper-container">
                 <div class="swiper-wrapper">
+                    @foreach($comments as $comment)
                     <div class="swiper-slide d-flex">
                         <div class="about1">
                             <div class="image">
-                                <img src="img/review_logo-min.png" alt="logo">
+                                <img src="{{ Storage::url($comment->image) }}" alt="logo">
                             </div>
                             <div class="name">
-                                <h5>Скляров Максим Сергеевич</h5>
-                                <p class="work">Генеральный директор ООО «Хэдхантер»</p>
+                                <h5>{{ $comment->name() }}</h5>
+                                <p class="work">{{ $comment->position() }}</p>
                             </div>
                         </div>
                         <div class="content">
-                            <p>Общество с ограниченной ответственностью «Хэдхантер» благодарит компанию «Lern.uz» за
-                                успешную разработку
-                                электронного курса для обучения новых сотрудников нашей компании. Уже первые
-                                результаты прохождения
-                                сотрудниками электронного курса показали существенное ускорение сроков адаптации и
-                                набора уровня знаний
-                                необходимого для эффективного взаимодействия с клиентами по расчету пакетов услуг и
-                                подбора оптимальных
-                                решений для типовых и нестандартных задач.</p>
+                            {!! $comment->description() !!}
                         </div>
                     </div>
-                    <div class="swiper-slide d-flex">
-                        <div class="about1">
-                            <div class="image">
-                                <img src="img/review_logo-min.png" alt="logo">
-                            </div>
-                            <div class="name">
-                                <h5>Скляров Максим Сергеевич</h5>
-                                <p class="work">Генеральный директор ООО «Хэдхантер»</p>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <p>Общество с ограниченной ответственностью «Хэдхантер» благодарит компанию «Lern.uz» за
-                                успешную разработку
-                                электронного курса для обучения новых сотрудников нашей компании. Уже первые
-                                результаты прохождения
-                                сотрудниками электронного курса показали существенное ускорение сроков адаптации и
-                                набора уровня знаний
-                                необходимого для эффективного взаимодействия с клиентами по расчету пакетов услуг и
-                                подбора оптимальных
-                                решений для типовых и нестандартных задач.</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">Slide 2</div>
-                    <div class="swiper-slide">Slide 3</div>
-                    <div class="swiper-slide">Slide 4</div>
-                    <div class="swiper-slide">Slide 5</div>
-                    <div class="swiper-slide">Slide 6</div>
-                    <div class="swiper-slide">Slide 7</div>
-                    <div class="swiper-slide">Slide 8</div>
-                    <div class="swiper-slide">Slide 9</div>
-                    <div class="swiper-slide">Slide 10</div>
+                    @endforeach
                 </div>
                 <!-- Add Arrows -->
                 <div class="swiper-button-next"><i class="fas fa-chevron-right"></i></div>
@@ -462,53 +427,56 @@
 
 
     <section class="order-form" id="order-form">
+        <a href="#order-form" id="btn_go_to"></a>
         <div class="container">
             <h2>Форма заказа электронного курса</h2>
             <h4 class="py-3">Закажите электронный курс и получите концепцию и прототип дизайна вашего курса
                 бесплатно</h4>
             <form class="my-form" action="{{ route('get_order') }}" method="POST">
                 @csrf
-                @if(session()->has('warning'))
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                    <strong>{{ session()->get('warning') }}</strong>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endif
+                @error('name')
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ $message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @enderror
+                @error('phone')
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ $message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @enderror
                 <div class="form mt-5">
-                    <input class="text p-3 mb-3" placeholder="Ваше имя" name="name">
-                    <input class="number p-3 mb-5" placeholder="Телефон" name="phone">
+                    <input class="text p-3 mb-3" id="name" placeholder="Ваше имя" name="name" value="{{ old('name') }}" required>
+                    <input class="number p-3 mb-5" id="tel" placeholder="Телефон" name="phone" value="{{ old('phone') }}" required>
                         <button class="button my-5" type="submit">Заказать курс</button>
                 </div>
             </form>
 
-{{--            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"--}}
-{{--                 aria-hidden="true">--}}
-{{--                <div class="modal-dialog" role="document">--}}
-{{--                    <div class="modal-content">--}}
-{{--                        <div class="modal-header">--}}
-{{--                            <h5 class="modal-title" id="exampleModalLabel">Ваша заявка успешно отправлена</h5>--}}
-{{--                            <button class="close" type="button" data-dismiss="modal" aria-label="close">--}}
-{{--                                <span aria-hidden="true">&times;</span>--}}
-{{--                            </button>--}}
-{{--                        </div>--}}
-{{--                        <div class="modal-body">--}}
-{{--                            <p>Наши операторы свяжутся с Вами</p>--}}
-{{--                        </div>--}}
-{{--                        <div class="modal-footer">--}}
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Ваша заявка успешно отправлена</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Наши операторы свяжутся с Вами</p>
+                        </div>
+                        <div class="modal-footer">
 
-{{--                            <button class="btn btn-success" data-dismiss="modal">Закрыть</button>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
+                            <button class="btn btn-success" data-dismiss="modal">Закрыть</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -561,6 +529,13 @@
 <script defer="" src="{{ asset('front/js/main.min.js') }}"></script>
 
 <script>
+    @if ($errors->any())
+        window.onload=function(){
+        document.getElementById("btn_go_to").click();
+    };
+    @endif
+
+
     @if(session('success'))
     $(function () {
         $('#exampleModal').modal('show')

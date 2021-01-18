@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\About;
 use App\Benefit;
 use App\Brend;
+use App\Comment;
 use App\Cost;
 use App\Format;
 use App\Method;
@@ -65,5 +66,8 @@ class AppServiceProvider extends ServiceProvider
 
         $abouts = About::get();
         View::share('abouts', $abouts);
+
+        $comments = Comment::get();
+        View::share('comments', $comments);
     }
 }

@@ -18,11 +18,10 @@ class MainController extends Controller
 
     public function order(OrderRequest $request)
     {
-        dd($request);
         Order::create([
             'name' => $request['name'],
             'phone' => $request['phone'],
         ]);
-        return Redirect::back()->with('success');
+        return Redirect::back()->with(session('success'));
     }
 }
