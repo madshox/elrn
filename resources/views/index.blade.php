@@ -393,6 +393,7 @@
         </section>
     @endif
 
+    @if( ! $comments->isEmpty() )
     <section class="review" id="review">
         <div class="container">
             <h2 class="pt-5 pb-3">Отзывы</h2>
@@ -420,10 +421,9 @@
                 <div class="swiper-button-next"><i class="fas fa-chevron-right"></i></div>
                 <div class="swiper-button-prev"><i class="fas fa-chevron-left"></i></div>
             </div>
-
-
         </div>
     </section>
+    @endif
 
 
     <section class="order-form" id="order-form">

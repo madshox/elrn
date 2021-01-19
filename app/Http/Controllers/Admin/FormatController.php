@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Format;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\FormatRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -37,8 +38,9 @@ class FormatController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FormatRequest $request)
     {
+        dd($request);
         $params = $request->all();
         unset($params['image']);
         if ($request->hasFile('image')) {
@@ -79,7 +81,7 @@ class FormatController extends Controller
      * @param  \App\Format  $format
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Format $format)
+    public function update(FormatRequest $request, Format $format)
     {
         $params = $request->all();
         unset($params['image']);
