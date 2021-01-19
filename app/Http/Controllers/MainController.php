@@ -22,6 +22,6 @@ class MainController extends Controller
             'name' => $request['name'],
             'phone' => $request['phone'],
         ]);
-        return Redirect::back()->with(session('success'));
+        return redirect()->back()->with('success');
     }
 }

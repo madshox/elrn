@@ -195,9 +195,7 @@
                     <h2 class="title">Тематика электронных курсов</h2>
 
                     <div class="accordions" id="accordionExample">
-{{--                        <span>{{ $i = 0 }}</span>--}}
                         @foreach($themes as $key => $theme)
-{{--                            {{ $i++ }}--}}
                             <div class="card">
                                 <div class="card-header" id="headingOne">
                                     <div class="mb-0">
@@ -456,27 +454,35 @@
                         <button class="button my-5" type="submit">Заказать курс</button>
                 </div>
             </form>
+            {{--Modal--}}
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ваша заявка успешно отправлена</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Наши операторы свяжутся с Вами</p>
+                    </div>
+                    <div class="modal-footer">
 
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
-                 aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Ваша заявка успешно отправлена</h5>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p>Наши операторы свяжутся с Вами</p>
-                        </div>
-                        <div class="modal-footer">
-
-                            <button class="btn btn-success" data-dismiss="modal">Закрыть</button>
-                        </div>
+                        <button class="btn btn-success" data-dismiss="modal">Закрыт</button>
                     </div>
                 </div>
             </div>
+            {{--end-modal--}}
+
+            <div class="col-sm-12" id="success">
+                <div class="alert  alert-danger alert-dismissible fade show" role="alert">
+                    $error
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -529,17 +535,17 @@
 <script defer="" src="{{ asset('front/js/main.min.js') }}"></script>
 
 <script>
+    @if(session()->has('success'))
+    $(function () {
+        $('#success').modal('show')
+    })
+    @endif
+
+
     @if ($errors->any())
         window.onload=function(){
         document.getElementById("btn_go_to").click();
     };
-    @endif
-
-
-    @if(session('success'))
-    $(function () {
-        $('#exampleModal').modal('show')
-    })
     @endif
 </script>
 
