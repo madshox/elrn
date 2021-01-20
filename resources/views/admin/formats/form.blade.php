@@ -17,6 +17,36 @@
                 <div class="row match-height">
                     <div class="col-12">
                         <div class="card" style="">
+
+                            <div class="card-body">
+                                {{--Errors--}}
+                            @error('name.ru')
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ $message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            @enderror
+                            @error('name.uz')
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ $message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            @enderror
+                            @error('name.en')
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ $message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            @enderror
+                            </div>
+                            {{--end-errors--}}
+
                             <div class="card-header">
                                 @isset($format)
                                     <h4 class="card-title">Редактировать</h4>
@@ -70,14 +100,6 @@
 
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        @error('name')
-                                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                                            {{ $message }}
-                                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        @enderror
                                                         <div class="text-bold-600 font-medium-2 mb-1">
                                                             Название
                                                         </div>
@@ -87,12 +109,12 @@
                                                                 <input type="text" class="form-control" id="name"
                                                                        name="name[ru]"
                                                                        placeholder="Название"
-                                                                       value="{{ old('name', isset($format) ? $format->name['ru'] : null) }}">
+                                                                       value="{{ old('name.ru', isset($format) ? $format->name['ru'] : null) }}">
                                                             @else
                                                                 <input type="text" class="form-control" id="name"
                                                                        name="name[ru]"
                                                                        placeholder="Название"
-                                                                       value="{{--{{ old('name', isset($format) ? $format->name : null) }}--}}">
+                                                                       value="{{ old('name.ru', isset($format) ? $format->name : null) }}">
                                                             @endisset
                                                             <div class="form-control-position">
                                                                 <i class="feather icon-phone"></i>
@@ -105,14 +127,7 @@
                                                  aria-labelledby="social-tab" role="tabpanel">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        @error('name')
-                                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                                            {{ $message }}
-                                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        @enderror
+
                                                         <div class="text-bold-600 font-medium-2 mb-1">
                                                             Название
                                                         </div>
@@ -122,12 +137,12 @@
                                                                 <input type="text" class="form-control" id="name"
                                                                        name="name[en]"
                                                                        placeholder="Название"
-                                                                       value="{{ old('name', isset($format) ? $format->name['en'] : null) }}">
+                                                                       value="{{ old('name.en', isset($format) ? $format->name['en'] : null) }}">
                                                             @else
                                                                 <input type="text" class="form-control" id="name"
                                                                        name="name[en]"
                                                                        placeholder="Название"
-                                                                       value="{{--{{ old('name', isset($format) ? $format->name['en'] : null) }}--}}">
+                                                                       value="{{ old('name.en', isset($format) ? $format->name['en'] : null) }}">
                                                             @endisset
                                                             <div class="form-control-position">
                                                                 <i class="feather icon-phone"></i>
@@ -140,14 +155,7 @@
                                                  aria-labelledby="profile-tab" role="tabpanel">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        @error('name')
-                                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                                            {{ $message }}
-                                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        @enderror
+
                                                         <div class="text-bold-600 font-medium-2 mb-1">
                                                             Название
                                                         </div>
@@ -157,12 +165,12 @@
                                                                 <input type="text" class="form-control" id="name"
                                                                        name="name[uz]"
                                                                        placeholder="Название"
-                                                                       value="{{ old('name', isset($format) ? $format->name['uz'] : null) }}">
+                                                                       value="{{ old('name.uz', isset($format) ? $format->name['uz'] : null) }}">
                                                             @else
                                                                 <input type="text" class="form-control" id="name"
                                                                        name="name[uz]"
                                                                        placeholder="Название"
-                                                                       value="{{--{{ old('name', isset($format) ? $format->name['uz'] : null) }}--}}">
+                                                                       value="{{ old('name.uz', isset($format) ? $format->name['uz'] : null) }}">
                                                             @endisset
                                                             <div class="form-control-position">
                                                                 <i class="feather icon-phone"></i>
@@ -173,8 +181,14 @@
                                             </div>
                                         </div>
 
+                                        {{--Upload-image--}}
                                         @error('image')
-                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            {{ $message }}
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
                                         @enderror
                                         <div class="text-bold-600 font-medium-2 mb-1">
                                             Картинка
@@ -189,6 +203,7 @@
                                                     webp, jpeg, jpg, png</label>
                                             </div>
                                         </fieldset>
+                                        {{--end-upload-image--}}
 
                                         <div class="card-body">
                                             <div class="row" style="display: inline-flex">

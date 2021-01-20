@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ThemeRequest;
 use App\Theme;
 use Illuminate\Http\Request;
 
@@ -36,7 +37,7 @@ class ThemeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ThemeRequest $request)
     {
         Theme::create($request->all());
         return redirect()->route('themes.index');
@@ -71,7 +72,7 @@ class ThemeController extends Controller
      * @param  \App\Theme  $theme
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Theme $theme)
+    public function update(ThemeRequest $request, Theme $theme)
     {
         $theme->update($request->all());
         return redirect()->route('themes.index');

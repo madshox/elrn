@@ -33,7 +33,7 @@ class OrderRequest extends FormRequest
     {
         return [
             'required' => 'Поле :attribute обязательна для заполнения',
-            'name.min' => 'Имя не может быть короче :min символов',
+            'name.min' => 'Имя не может быть короче :min символа',
             'phone.min' => 'Номер телефона не может быть короче :min символов'
         ];
     }

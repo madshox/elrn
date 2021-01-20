@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Benefit;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BenefitRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -37,7 +38,7 @@ class BenefitController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BenefitRequest $request)
     {
         $params = $request->all();
         unset($params['image']);
@@ -79,7 +80,7 @@ class BenefitController extends Controller
      * @param  \App\Benefit  $benefit
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Benefit $benefit)
+    public function update(BenefitRequest $request, Benefit $benefit)
     {
         $params = $request->all();
         unset($params['image']);

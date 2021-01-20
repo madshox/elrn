@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\MethodRequest;
 use App\Method;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -37,7 +38,7 @@ class MethodController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MethodRequest $request)
     {
         $params = $request->all();
         unset($params['image']);
@@ -79,7 +80,7 @@ class MethodController extends Controller
      * @param  \App\Method  $method
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Method $method)
+    public function update(MethodRequest $request, Method $method)
     {
         $params = $request->all();
         unset($params['image']);

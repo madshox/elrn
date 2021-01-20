@@ -17,6 +17,36 @@
                 <div class="row match-height">
                     <div class="col-12">
                         <div class="card" style="">
+
+                            {{--Errors--}}
+                            <div class="card-body">
+                                @error('description.ru')
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ $message }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                @enderror
+                                @error('description.en')
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ $message }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                @enderror
+                                @error('description.uz')
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ $message }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                @enderror
+                            </div>
+                            {{--End-errors--}}
+
                             <div class="card-header">
                                 @isset($process)
                                     <h4 class="card-title">Редактировать</h4>
@@ -70,19 +100,16 @@
 
                                                 <div class="row">
                                                     {{--CK-editor--}}
-                                                    @error('description')
-                                                    <div class="alert alert-danger">{{ $message }}</div>
-                                                    @enderror
                                                     <div class="col-12">
                                                         <div class="text-bold-600 font-medium-2 mb-1">
                                                             Описание
                                                         </div>
                                                         @isset($process)
                                                         <textarea name="description[ru]" id="editor" cols="30"
-                                                                  rows="10">{{ old('description', isset($process) ? $process->description['ru'] : null) }}</textarea>
+                                                                  rows="10">{{ old('description.ru', isset($process) ? $process->description['ru'] : null) }}</textarea>
                                                         @else
                                                             <textarea name="description[ru]" id="editor" cols="30"
-                                                                      rows="10">{{ old('description', isset($process) ? $process->description['ru'] : null) }}</textarea>
+                                                                      rows="10">{{ old('description.ru', isset($process) ? $process->description['ru'] : null) }}</textarea>
                                                         @endisset
                                                     </div>
                                                     {{--end-CK-editor--}}
@@ -94,19 +121,16 @@
                                                 <div class="row">
 
                                                     {{--CK-editor--}}
-                                                    @error('description')
-                                                    <div class="alert alert-danger">{{ $message }}</div>
-                                                    @enderror
                                                     <div class="col-12">
                                                         <div class="text-bold-600 font-medium-2 mb-1">
                                                             Описание
                                                         </div>
                                                         @isset($process)
                                                             <textarea name="description[en]" id="editor1" cols="30"
-                                                                      rows="10">{{ old('description', isset($process) ? $process->description['en'] : null) }}</textarea>
+                                                                      rows="10">{{ old('description.en', isset($process) ? $process->description['en'] : null) }}</textarea>
                                                         @else
                                                             <textarea name="description[en]" id="editor1" cols="30"
-                                                                      rows="10">{{ old('description', isset($process) ? $process->description['en'] : null) }}</textarea>
+                                                                      rows="10">{{ old('description.en', isset($process) ? $process->description['en'] : null) }}</textarea>
                                                         @endisset
                                                     </div>
                                                     {{--end-CK-editor--}}
@@ -119,19 +143,16 @@
                                                 <div class="row">
 
                                                     {{--CK-editor--}}
-                                                    @error('description')
-                                                    <div class="alert alert-danger">{{ $message }}</div>
-                                                    @enderror
                                                     <div class="col-12">
                                                         <div class="text-bold-600 font-medium-2 mb-1">
                                                             Описание
                                                         </div>
                                                         @isset($process)
                                                             <textarea name="description[uz]" id="editor2" cols="30"
-                                                                      rows="10">{{ old('description', isset($process) ? $process->description['uz'] : null) }}</textarea>
+                                                                      rows="10">{{ old('description.uz', isset($process) ? $process->description['uz'] : null) }}</textarea>
                                                         @else
                                                             <textarea name="description[uz]" id="editor2" cols="30"
-                                                                      rows="10">{{ old('description', isset($process) ? $process->description['uz'] : null) }}</textarea>
+                                                                      rows="10">{{ old('description.uz', isset($process) ? $process->description['uz'] : null) }}</textarea>
                                                         @endisset
                                                     </div>
                                                     {{--end-CK-editor--}}
@@ -140,11 +161,16 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-12" style="margin-top: 20px">
-                                            @error('image')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
-                                            <div class="text-bold-600 font-medium-2 mb-1">
+
+                                            <div class="text-bold-600 font-medium-2 mb-1 mt-2">
+                                                @error('image')
+                                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                    {{ $message }}
+                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                @enderror
                                                 Картинка
                                             </div>
                                             <fieldset class="form-group">
@@ -157,7 +183,6 @@
                                                         webp, jpeg, jpg, png</label>
                                                 </div>
                                             </fieldset>
-                                        </div>
 
                                         <div class="card-body">
                                             <div class="row" style="display: inline-flex">

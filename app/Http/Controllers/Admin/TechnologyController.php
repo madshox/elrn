@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TechnologyRequest;
 use App\Technology;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -37,7 +38,7 @@ class TechnologyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TechnologyRequest $request)
     {
         $params = $request->all();
         unset($params['image']);
@@ -79,7 +80,7 @@ class TechnologyController extends Controller
      * @param  \App\Technology  $technology
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Technology $technology)
+    public function update(TechnologyRequest $request, Technology $technology)
     {
         $params = $request->all();
         unset($params['image']);

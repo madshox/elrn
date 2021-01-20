@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Cost;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CostRequest;
 use Illuminate\Http\Request;
 
 class CostController extends Controller
@@ -36,7 +37,7 @@ class CostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CostRequest $request)
     {
         Cost::create($request->all());
         return redirect()->route('costs.index');
@@ -71,7 +72,7 @@ class CostController extends Controller
      * @param  \App\Cost  $cost
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cost $cost)
+    public function update(CostRequest $request, Cost $cost)
     {
         $cost->update($request->all());
         return redirect()->route('costs.index');

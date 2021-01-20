@@ -151,6 +151,9 @@
             <li class=" nav-item"><a href="{{ route('processes.index') }}"><i
                         class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">Процессы</span></a>
             </li>
+            <li class=" nav-item"><a href="{{ route('costs.index') }}"><i
+                        class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">Стоимость</span></a>
+            </li>
             <li class=" nav-item"><a href="{{ route('brends.index') }}"><i
                         class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">Нам доверяют</span></a>
             </li>

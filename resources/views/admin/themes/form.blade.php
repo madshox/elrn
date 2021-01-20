@@ -17,6 +17,60 @@
                 <div class="row match-height">
                     <div class="col-12">
                         <div class="card" style="">
+
+                            {{--Errors--}}
+                            <div class="card-body">
+                                @error('name.ru')
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ $message }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                @enderror
+                                @error('description.ru')
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ $message }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                @enderror
+                                @error('name.en')
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ $message }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                @enderror
+                                @error('description.en')
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ $message }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                @enderror
+                                @error('name.uz')
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ $message }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                @enderror
+                                @error('description.uz')
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ $message }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                @enderror
+                            </div>
+                            {{--End-errors--}}
+
                             <div class="card-header">
                                 @isset($theme)
                                     <h4 class="card-title">Редактировать</h4>
@@ -69,22 +123,18 @@
                                                  aria-labelledby="account-tab" role="tabpanel">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        @error('name')
-                                                        <div class="alert alert-danger">{{ $message }}</div>
-                                                        @enderror
-
                                                         <fieldset
                                                             class="form-group position-relative has-icon-left input-divider-left">
                                                             @isset($theme)
                                                                 <input type="text" class="form-control" id="name"
                                                                        name="name[ru]"
                                                                        placeholder="Название"
-                                                                       value="{{ old('name', isset($theme) ? $theme->name['ru'] : null) }}">
+                                                                       value="{{ old('name.ru', isset($theme) ? $theme->name['ru'] : null) }}">
                                                             @else
                                                                 <input type="text" class="form-control" id="name"
                                                                        name="name[ru]"
                                                                        placeholder="Название"
-                                                                       value="{{ old('name', isset($theme) ? $theme->name['ru'] : null) }}">
+                                                                       value="{{ old('name.ru', isset($theme) ? $theme->name['ru'] : null) }}">
                                                             @endisset
                                                             <div class="form-control-position">
                                                                 <i class="feather icon-phone"></i>
@@ -93,19 +143,17 @@
                                                     </div>
 
                                                     {{--CK-editor--}}
-                                                    @error('description')
-                                                    <div class="alert alert-danger">{{ $message }}</div>
-                                                    @enderror
+
                                                     <div class="col-12">
                                                         <div class="text-bold-600 font-medium-2 mb-1">
                                                             Описание
                                                         </div>
                                                         @isset($theme)
                                                             <textarea name="description[ru]" id="editor" cols="30"
-                                                                      rows="10">{{ old('description', isset($theme) ? $theme->description['ru'] : null) }}</textarea>
+                                                                      rows="10">{{ old('description.ru', isset($theme) ? $theme->description['ru'] : null) }}</textarea>
                                                         @else
                                                             <textarea name="description[ru]" id="editor" cols="30"
-                                                                      rows="10">{{ old('description', isset($theme) ? $theme->description['ru'] : null) }}</textarea>
+                                                                      rows="10">{{ old('description.ru', isset($theme) ? $theme->description['ru'] : null) }}</textarea>
                                                         @endisset
                                                     </div>
                                                     {{--end-CK-editor--}}
@@ -116,9 +164,6 @@
                                                  aria-labelledby="social-tab" role="tabpanel">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        @error('name')
-                                                        <div class="alert alert-danger">{{ $message }}</div>
-                                                        @enderror
 
                                                         <fieldset
                                                             class="form-group position-relative has-icon-left input-divider-left">
@@ -126,12 +171,12 @@
                                                                 <input type="text" class="form-control" id="name"
                                                                        name="name[en]"
                                                                        placeholder="Название"
-                                                                       value="{{ old('name', isset($theme) ? $theme->name['en'] : null) }}">
+                                                                       value="{{ old('name.en', isset($theme) ? $theme->name['en'] : null) }}">
                                                             @else
                                                                 <input type="text" class="form-control" id="name"
                                                                        name="name[en]"
                                                                        placeholder="Название"
-                                                                       value="{{ old('name', isset($theme) ? $theme->name['en'] : null) }}">
+                                                                       value="{{ old('name.en', isset($theme) ? $theme->name['en'] : null) }}">
                                                             @endisset
                                                             <div class="form-control-position">
                                                                 <i class="feather icon-phone"></i>
@@ -140,19 +185,16 @@
                                                     </div>
 
                                                     {{--CK-editor--}}
-                                                    @error('description')
-                                                    <div class="alert alert-danger">{{ $message }}</div>
-                                                    @enderror
                                                     <div class="col-12">
                                                         <div class="text-bold-600 font-medium-2 mb-1">
                                                             Описание
                                                         </div>
                                                         @isset($theme)
                                                             <textarea name="description[en]" id="editor1" cols="30"
-                                                                      rows="10">{{ old('description', isset($theme) ? $theme->description['en'] : null) }}</textarea>
+                                                                      rows="10">{{ old('description.en', isset($theme) ? $theme->description['en'] : null) }}</textarea>
                                                         @else
                                                             <textarea name="description[en]" id="editor1" cols="30"
-                                                                      rows="10">{{ old('description', isset($theme) ? $theme->description['en'] : null) }}</textarea>
+                                                                      rows="10">{{ old('description.en', isset($theme) ? $theme->description['en'] : null) }}</textarea>
                                                         @endisset
                                                     </div>
                                                     {{--end-CK-editor--}}
@@ -163,9 +205,6 @@
                                                  aria-labelledby="profile-tab" role="tabpanel">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        @error('name')
-                                                        <div class="alert alert-danger">{{ $message }}</div>
-                                                        @enderror
 
                                                         <fieldset
                                                             class="form-group position-relative has-icon-left input-divider-left">
@@ -173,12 +212,12 @@
                                                                 <input type="text" class="form-control" id="name"
                                                                        name="name[uz]"
                                                                        placeholder="Название"
-                                                                       value="{{ old('name', isset($theme) ? $theme->name['uz'] : null) }}">
+                                                                       value="{{ old('name.uz', isset($theme) ? $theme->name['uz'] : null) }}">
                                                             @else
                                                                 <input type="text" class="form-control" id="name"
                                                                        name="name[uz]"
                                                                        placeholder="Название"
-                                                                       value="{{ old('name', isset($theme) ? $theme->name['uz'] : null) }}">
+                                                                       value="{{ old('name.uz', isset($theme) ? $theme->name['uz'] : null) }}">
                                                             @endisset
                                                             <div class="form-control-position">
                                                                 <i class="feather icon-phone"></i>
@@ -187,19 +226,16 @@
                                                     </div>
 
                                                     {{--CK-editor--}}
-                                                    @error('description')
-                                                    <div class="alert alert-danger">{{ $message }}</div>
-                                                    @enderror
                                                     <div class="col-12">
                                                         <div class="text-bold-600 font-medium-2 mb-1">
                                                             Описание
                                                         </div>
                                                         @isset($theme)
                                                             <textarea name="description[uz]" id="editor2" cols="30"
-                                                                      rows="10">{{ old('description', isset($theme) ? $theme->description['uz'] : null) }}</textarea>
+                                                                      rows="10">{{ old('description.uz', isset($theme) ? $theme->description['uz'] : null) }}</textarea>
                                                         @else
                                                             <textarea name="description[uz]" id="editor2" cols="30"
-                                                                      rows="10">{{ old('description', isset($theme) ? $theme->description['uz'] : null) }}</textarea>
+                                                                      rows="10">{{ old('description.uz', isset($theme) ? $theme->description['uz'] : null) }}</textarea>
                                                         @endisset
                                                     </div>
                                                     {{--end-CK-editor--}}

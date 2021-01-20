@@ -392,35 +392,35 @@
     @endif
 
     @if( ! $comments->isEmpty() )
-    <section class="review" id="review">
-        <div class="container">
-            <h2 class="pt-5 pb-3">Отзывы</h2>
+        <section class="review" id="review">
+            <div class="container">
+                <h2 class="pt-5 pb-3">Отзывы</h2>
 
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    @foreach($comments as $comment)
-                    <div class="swiper-slide d-flex">
-                        <div class="about1">
-                            <div class="image">
-                                <img src="{{ Storage::url($comment->image) }}" alt="logo">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        @foreach($comments as $comment)
+                            <div class="swiper-slide d-flex">
+                                <div class="about1">
+                                    <div class="image">
+                                        <img src="{{ Storage::url($comment->image) }}" alt="logo">
+                                    </div>
+                                    <div class="name">
+                                        <h5>{{ $comment->name() }}</h5>
+                                        <p class="work">{{ $comment->position() }}</p>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    {!! $comment->description() !!}
+                                </div>
                             </div>
-                            <div class="name">
-                                <h5>{{ $comment->name() }}</h5>
-                                <p class="work">{{ $comment->position() }}</p>
-                            </div>
-                        </div>
-                        <div class="content">
-                            {!! $comment->description() !!}
-                        </div>
+                        @endforeach
                     </div>
-                    @endforeach
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"><i class="fas fa-chevron-right"></i></div>
+                    <div class="swiper-button-prev"><i class="fas fa-chevron-left"></i></div>
                 </div>
-                <!-- Add Arrows -->
-                <div class="swiper-button-next"><i class="fas fa-chevron-right"></i></div>
-                <div class="swiper-button-prev"><i class="fas fa-chevron-left"></i></div>
             </div>
-        </div>
-    </section>
+        </section>
     @endif
 
 
@@ -449,39 +449,43 @@
                 </div>
                 @enderror
                 <div class="form mt-5">
-                    <input class="text p-3 mb-3" id="name" placeholder="Ваше имя" name="name" value="{{ old('name') }}" required>
-                    <input class="number p-3 mb-5" id="tel" placeholder="Телефон" name="phone" value="{{ old('phone') }}" required>
-                        <button class="button my-5" type="submit">Заказать курс</button>
+                    <input class="text p-3 mb-3" id="name" placeholder="Ваше имя" name="name" value="{{ old('name') }}"
+                           required>
+                    <input class="number p-3 mb-5" id="tel" placeholder="Телефон" name="phone"
+                           value="{{ old('phone') }}" required>
+                    <button class="button my-5" type="submit">Заказать курс</button>
                 </div>
             </form>
-            {{--Modal--}}
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ваша заявка успешно отправлена</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Наши операторы свяжутся с Вами</p>
-                    </div>
-                    <div class="modal-footer">
 
-                        <button class="btn btn-success" data-dismiss="modal">Закрыт</button>
+            {{--Sucess-Modal--}}
+            <div id="success" class="modal fade">
+                <div class="modal-dialog modal-confirm">
+                    <div class="modal-content">
+                        <div class="modal-header justify-content-center">
+                            <div class="icon-box">
+                                <i class="material-icons">&#xE876;</i>
+                            </div>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body text-center">
+                            <h4>Great!</h4>
+                            <p>Your account has been created successfully.</p>
+                            <button class="btn btn-success" data-dismiss="modal"><span>Start Exploring</span> <i
+                                    class="material-icons">&#xE5C8;</i></button>
+                        </div>
                     </div>
                 </div>
             </div>
             {{--end-modal--}}
 
-            <div class="col-sm-12" id="success">
-                <div class="alert  alert-danger alert-dismissible fade show" role="alert">
-                    $error
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            </div>
+            {{--            <div class="col-sm-12" id="success">--}}
+            {{--                <div class="alert  alert-danger alert-dismissible fade show" role="alert">--}}
+            {{--                    $error--}}
+            {{--                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">--}}
+            {{--                        <span aria-hidden="true">&times;</span>--}}
+            {{--                    </button>--}}
+            {{--                </div>--}}
+            {{--            </div>--}}
 
         </div>
     </section>
@@ -535,15 +539,15 @@
 <script defer="" src="{{ asset('front/js/main.min.js') }}"></script>
 
 <script>
-    @if(session()->has('success'))
+    @if(session('success'))
     $(function () {
         $('#success').modal('show')
     })
     @endif
 
 
-    @if ($errors->any())
-        window.onload=function(){
+        @if ($errors->any())
+        window.onload = function () {
         document.getElementById("btn_go_to").click();
     };
     @endif

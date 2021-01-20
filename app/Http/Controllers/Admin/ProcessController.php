@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProcessRequest;
 use App\Process;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -37,7 +38,7 @@ class ProcessController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProcessRequest $request)
     {
         $params = $request->all();
         unset($params['image']);
@@ -79,7 +80,7 @@ class ProcessController extends Controller
      * @param  \App\Process  $process
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Process $process)
+    public function update(ProcessRequest $request, Process $process)
     {
         $params = $request->all();
         unset($params['image']);

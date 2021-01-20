@@ -17,6 +17,36 @@
                 <div class="row match-height">
                     <div class="col-12">
                         <div class="card" style="">
+
+                            {{--Errors--}}
+                            <div class="card-body">
+                                @error('text.ru')
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ $message }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                @enderror
+                                @error('text.en')
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ $message }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                @enderror
+                                @error('text.uz')
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ $message }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                @enderror
+                            </div>
+                            {{--End-errors--}}
+
                             <div class="card-header">
                                 @isset($variant)
                                     <h4 class="card-title">Редактировать</h4>
@@ -70,19 +100,16 @@
 
                                                 <div class="row">
                                                     {{--CK-editor--}}
-                                                    @error('text')
-                                                    <div class="alert alert-danger">{{ $message }}</div>
-                                                    @enderror
                                                     <div class="col-12">
                                                         <div class="text-bold-600 font-medium-2 mb-1">
                                                             Описание
                                                         </div>
                                                         @isset($variant)
                                                         <textarea name="text[ru]" id="editor" cols="30"
-                                                                  rows="10">{{ old('text', isset($variant) ? $variant->text['ru'] : null) }}</textarea>
+                                                                  rows="10">{{ old('text.ru', isset($variant) ? $variant->text['ru'] : null) }}</textarea>
                                                         @else
                                                             <textarea name="text[ru]" id="editor" cols="30"
-                                                                      rows="10">{{--{{ old('text', isset($variant) ? $variant->text['ru'] : null) }}--}}</textarea>
+                                                                      rows="10">{{ old('text.ru', isset($variant) ? $variant->text['ru'] : null) }}</textarea>
                                                         @endisset
                                                     </div>
                                                     {{--end-CK-editor--}}
@@ -94,19 +121,16 @@
                                                 <div class="row">
 
                                                     {{--CK-editor--}}
-                                                    @error('text')
-                                                    <div class="alert alert-danger">{{ $message }}</div>
-                                                    @enderror
                                                     <div class="col-12">
                                                         <div class="text-bold-600 font-medium-2 mb-1">
                                                             Описание
                                                         </div>
                                                         @isset($variant)
                                                             <textarea name="text[en]" id="editor1" cols="30"
-                                                                      rows="10">{{ old('text', isset($variant) ? $variant->text['en'] : null) }}</textarea>
+                                                                      rows="10">{{ old('text.en', isset($variant) ? $variant->text['en'] : null) }}</textarea>
                                                         @else
                                                             <textarea name="text[en]" id="editor1" cols="30"
-                                                                      rows="10">{{--{{ old('text', isset($variant) ? $variant->text['en'] : null) }}--}}</textarea>
+                                                                      rows="10">{{ old('text.en', isset($variant) ? $variant->text['en'] : null) }}</textarea>
                                                         @endisset
                                                     </div>
                                                     {{--end-CK-editor--}}
@@ -119,24 +143,16 @@
                                                 <div class="row">
 
                                                     {{--CK-editor--}}
-                                                    @error('text')
-                                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                                        {{ $message }}
-                                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    @enderror
                                                     <div class="col-12">
                                                         <div class="text-bold-600 font-medium-2 mb-1">
                                                             Описание
                                                         </div>
                                                         @isset($variant)
                                                             <textarea name="text[uz]" id="editor2" cols="30"
-                                                                      rows="10">{{ old('text', isset($variant) ? $variant->text['uz'] : null) }}</textarea>
+                                                                      rows="10">{{ old('text.uz', isset($variant) ? $variant->text['uz'] : null) }}</textarea>
                                                         @else
                                                             <textarea name="text[uz]" id="editor2" cols="30"
-                                                                      rows="10">{{--{{ old('text', isset($variant) ? $variant->text['uz'] : null) }}--}}</textarea>
+                                                                      rows="10">{{ old('text.uz', isset($variant) ? $variant->text['uz'] : null) }}</textarea>
                                                         @endisset
                                                     </div>
                                                     {{--end-CK-editor--}}

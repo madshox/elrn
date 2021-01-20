@@ -25,7 +25,9 @@ class VariantRequest extends FormRequest
     {
         return [
             'image' => 'required|image',
-            'description' => 'required|image|min:10',
+            'text.ru' => 'required',
+            'text.en' => 'required',
+            'text.uz' => 'required',
         ];
     }
 
@@ -33,7 +35,7 @@ class VariantRequest extends FormRequest
     {
         return [
             'required' => 'Поле :attribute обязательна для заполнения',
-            'min' => 'Поле :attribute должна иметь минимум 3 символов',
+            'min' => 'Поле :attribute должна иметь минимум 3 символа',
             'image' => 'Поддерживаются файлы типа jpg, jpeg, png, bmp, gif, svg, или webp',
         ];
     }

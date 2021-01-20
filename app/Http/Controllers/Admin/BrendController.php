@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Brend;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BrendRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -37,7 +38,7 @@ class BrendController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BrendRequest $request)
     {
         $params = $request->all();
         unset($params['image']);
@@ -79,7 +80,7 @@ class BrendController extends Controller
      * @param  \App\Brend  $brend
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Brend $brend)
+    public function update(BrendRequest $request, Brend $brend)
     {
         $params = $request->all();
         unset($params['image']);

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FormatRequest extends FormRequest
+class TechnologyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,9 +25,12 @@ class FormatRequest extends FormRequest
     {
         return [
             'image' => 'required|image',
-            'name.ru' => 'required|string|min:2',
-            'name.en' => 'required|string|min:2',
-            'name.uz' => 'required|string|min:2',
+            'name.ru' => 'required|min:3',
+            'name.en' => 'required|min:3',
+            'name.uz' => 'required|min:3',
+            'description.ru' => 'required',
+            'description.en' => 'required',
+            'description.uz' => 'required',
         ];
     }
 
@@ -35,7 +38,7 @@ class FormatRequest extends FormRequest
     {
         return [
             'required' => 'Поле :attribute обязательна для заполнения',
-            'min' => 'Поле :attribute должна иметь минимум :min символа',
+            'min' => 'Поле :attribute должна иметь минимум 3 символа',
             'image' => 'Поддерживаются файлы типа jpg, jpeg, png, bmp, gif, svg, или webp',
         ];
     }
