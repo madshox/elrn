@@ -24,7 +24,7 @@ async function buildSvelte(format, cb) {
   fileContent = `${bannerSvelte}\n${fileContent}`;
   fs.writeFileSync(`./${outputDir}/swiper-svelte.${format}.js`, fileContent);
 
-  // Transform svelte files
+  // Transform svelte products
   let swiper = fs.readFileSync('./src/svelte/swiper.svelte', 'utf8');
   const swiperResult = svelte.compile(swiper, {
     format,
@@ -45,7 +45,7 @@ async function buildSvelte(format, cb) {
     fs.unlinkSync(`./${outputDir}/svelte/swiper-slide.svelte`);
     fs.unlinkSync(`./${outputDir}/svelte/swiper.svelte`);
   } catch (err) {
-    // no files
+    // no products
   }
 
   if (cb) cb();

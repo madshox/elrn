@@ -15,8 +15,8 @@ function convertFileNameToId(text) {
 }
 
 /**
- * Gets all the markdown files on a folder, compile them to html and returns
- * @param {string} dir - folder containing all the .md files
+ * Gets all the markdown products on a folder, compile them to html and returns
+ * @param {string} dir - folder containing all the .md products
  */
 
 function compileMD(dir = 'sections') {

@@ -33,8 +33,8 @@ Dropzone.options.dpzMultipleFiles = {
 ********************************************************/
 new Dropzone(document.body, { // Make the whole body a dropzone
   url: "#", // Set the url
-  previewsContainer: "#dpz-btn-select-files", // Define the container to display the previews
-  clickable: "#select-files" // Define the element that should be used as click trigger to select files.
+  previewsContainer: "#dpz-btn-select-products", // Define the container to display the previews
+  clickable: "#select-products" // Define the element that should be used as click trigger to select products.
 });
 
 

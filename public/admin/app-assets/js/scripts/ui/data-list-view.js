@@ -142,7 +142,7 @@ $(document).ready(function() {
   Dropzone.options.dataListUpload = {
     complete: function(files) {
       var _this = this
-      // checks files in class dropzone and remove that files
+      // checks products in class dropzone and remove that products
       $(".hide-data-sidebar, .cancel-data-btn, .actions .dt-buttons").on(
         "click",
         function() {

@@ -34,5 +34,6 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin'], function () {
         Route::resource('/brends', 'BrendController');
         Route::resource('/abouts', 'AboutController');
         Route::resource('/comments', 'CommentController');
+        Route::resource('/products', 'ProductController');
     });
 });

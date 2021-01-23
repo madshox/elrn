@@ -22,6 +22,6 @@ class MainController extends Controller
             'name' => $request['name'],
             'phone' => $request['phone'],
         ]);
-        return redirect()->back()->with('success');
+        return redirect()->back()->with('success',true);
     }
 }

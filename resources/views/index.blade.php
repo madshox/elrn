@@ -545,8 +545,7 @@
     })
     @endif
 
-
-        @if ($errors->any())
+    @if ($errors->any())
         window.onload = function () {
         document.getElementById("btn_go_to").click();
     };

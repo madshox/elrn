@@ -40,7 +40,6 @@ class FormatController extends Controller
      */
     public function store(FormatRequest $request)
     {
-        dd($request);
         $params = $request->all();
         unset($params['image']);
         if ($request->hasFile('image')) {

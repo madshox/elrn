@@ -49,7 +49,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/css/style.css') }}">
     <!-- END: Custom CSS-->
 
-
 </head>
 <!-- END: Head-->
 
@@ -134,6 +133,9 @@
             </li>
             <li class=" nav-item"><a href="{{ route('variants.index') }}"><i
                         class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">Варианты поставки</span></a>
+            </li>
+            <li class=" nav-item"><a href="{{ route('products.index') }}"><i
+                        class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">FOTO</span></a>
             </li>
             <li class=" nav-item"><a href="{{ route('formats.index') }}"><i class="feather icon-check-square"></i><span
                         class="menu-title" data-i18n="Todo">Форматы разработки</span></a>

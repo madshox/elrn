@@ -5365,7 +5365,7 @@ typeof navigator === "object" && (function (global, factory) {
       /**
        * Publish bundle load event.
        * @param {string} bundleId - Bundle id
-       * @param {string[]} pathsNotFound - List of files not found
+       * @param {string[]} pathsNotFound - List of products not found
        */
 
 
@@ -5474,7 +5474,7 @@ typeof navigator === "object" && (function (global, factory) {
         if (beforeCallbackFn(path, e) !== false) doc.head.appendChild(e);
       }
       /**
-       * Load multiple files.
+       * Load multiple products.
        * @param {string[]} paths - The file paths
        * @param {Function} callbackFn - The callback function
        */
@@ -7137,7 +7137,7 @@ typeof navigator === "object" && (function (global, factory) {
 
           _this.loaded = true;
         });
-      } // Download VTT files and parse them
+      } // Download VTT products and parse them
 
     }, {
       key: "getThumbnails",
