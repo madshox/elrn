@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Product;
+use Faker\Provider\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -51,6 +53,7 @@ class ProductController extends Controller
                 $post->image()->create(['name'=>$name]);
             }
         }
+        return redirect()->route('products.index');
     }
 
     /**
@@ -72,7 +75,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('admin.products.form', compact('product'));
     }
 
     /**
@@ -84,18 +87,21 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-//        $post = Product::create($request->all());
-//        if ($request->hasFile('image')) {
-//            $files = $request->file('image');
-//            foreach ($files as $file)
-//            {
-//                $name = time().'-'.$file->getClientOriginalName();
-//                $name = str_replace(' ', '-', $name);
-//
-//                $file->move('storage/images', $name);
-//                $post->image()->create(['name'=>$name]);
-//            }
-//        }
+        $product->update($request->all());
+        if ($request->hasFile('image')) {
+            $product->image()->delete();
+            Storage::delete($product->image);
+            $files = $request->file('image');
+            foreach ($files as $file)
+            {
+                $name = time().'-'.$file->getClientOriginalName();
+                $name = str_replace(' ', '-', $name);
+
+                $file->move('storage/images', $name);
+                $product->image()->create(['name'=>$name]);
+            }
+        }
+        return redirect()->route('products.index');
     }
 
     /**
@@ -107,5 +113,6 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
+        return redirect()->route('products.index');
     }
 }
